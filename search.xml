@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[设置Front-matter中的标签]]></title>
+      <url>%2F2016%2F11%2F18%2F%E8%AE%BE%E7%BD%AEFront-matter%E4%B8%AD%E7%9A%84%E6%A0%87%E7%AD%BE%2F</url>
+      <content type="text"><![CDATA[创建新page时，Front-matter只有”title” “date” “tags”, 每次都需要添加 categories 标签。于是就在想创建的页面模板在哪，在网上找一圈，发现都和自己的需要不太一样。就自己弄吧。幸亏之前在创建tagsCloud的时候瞟到了原来最上面的一层叫Front-matter。之后又查到了，每次创建文件的时候都是参照hexo的scaffolds目录下，相应的md文件，包括三个文件: post.md(新建页面参照的模板), page.md(新建page参照的模板,比如tags和about), draft.md(新建草稿参照的模板) 一点开post.md，就什么都明白了，之后高高兴兴的添上一行 categories。创建一个新的页面，果然添上了 categories 这一项。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[2016年11月任务]]></title>
+      <url>%2F2016%2F11%2F18%2F2016%E5%B9%B411%E6%9C%88%E4%BB%BB%E5%8A%A1%2F</url>
+      <content type="text"><![CDATA[学习前端技术，实现的效果类似于 滴滴快的苍穹]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[hexo创建新日志时，自动调用编辑器打开]]></title>
+      <url>%2F2016%2F11%2F18%2Fhexo%E5%88%9B%E5%BB%BA%E6%96%B0%E6%97%A5%E5%BF%97%E6%97%B6%EF%BC%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%2F</url>
+      <content type="text"><![CDATA[每次 用 hexo new “pagename” 创建完文章，之后还要到source目录下找到新建的文章，在用编辑器打开，简直是神烦。之后看到了wanghao大神的一篇文章(Hexo添加文章时自动打开编辑器)以及留评论的大神，终于是把这个问题比较完美的解决了。如果是windows平台的Hexo用户，步骤是: 在Hexo目录下，创建scripts目录 在scripts目录下，创建一个JavaScript文件，可任意命名如auto-open-new-articles.js 向新建的js文件中写入一下代码 123456789101112 var _exec = require(&apos;child_process&apos;).exec;//使用命令 hexo version 来查看自己的hexo版本// Hexo 2.x 用户复制这段hexo.on(&apos;new&apos;, function(path)&#123;_exec(&apos;start &quot;&quot; &quot;markdown编辑器绝对路径.exe&quot; &apos; + path);&#125;);// Hexo 3 用户复制这段hexo.on(&apos;new&apos;, function(data)&#123;_exec(&apos;start &quot;&quot; &quot;markdown编辑器绝对路径.exe&quot; &apos; + data.path);&#125;); 注意：代码中 markdown编辑器绝对路径.exe 要改成自己编辑器的路径，并且使用双斜杠，比如 12D:\Program Files\Sublime Text 3\sublime_text.exe 改成D:\\Program Files\\Sublime Text 3\\sublime_text.exe 因为博主本人是windows端的，测试的是windows端的js，如果是Mac的用户的话，就直接进这个链接，wanghao大神的博客里面写的很清楚。如果mac没有搭建成功的话，可以看看下面的评论，评论里面也给出了解决方案。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[一夜在 BeiJing]]></title>
       <url>%2F2016%2F11%2F17%2F%E4%B8%80%E5%A4%9C%E5%9C%A8BeiJing%2F</url>
       <content type="text"><![CDATA[hahah，One Night in 北京，现在才认真听，罪过罪过，原来这首才是信的封神之作 One Night in 北京我留下许多情不管你爱与不爱都是历史的尘埃]]></content>
