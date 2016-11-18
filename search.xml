@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[在hexo博客foot位置处添加版权说明]]></title>
+      <url>%2F2016%2F11%2F18%2F%E5%9C%A8hexo%E5%8D%9A%E5%AE%A2foot%E4%BD%8D%E7%BD%AE%E5%A4%84%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E8%AF%B4%E6%98%8E%2F</url>
+      <content type="text"><![CDATA[想加一个版权说明，其实在主题配置文件中大概是160行处已经有了，只要把 creative_commons: by-nc-sa 这句的注释去掉，然后就可以在侧栏的位置处，出现一个cc图标点击就可以链接到网站。不过感觉那个版权的内容不太适合，就自己在foot的位置处，添加了一行 版权说明。参考了 Codeagles的文章(Hexo-Next底部更改) 步骤: 打开 \themes\next\layout_partials\下面的footer.swig文件 找到 1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt;&lt;/span&gt; 更改为1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt; &lt;a class=&quot;theme-link&quot; href=&quot;博客的网址&quot;&gt;本站&lt;/a&gt;作品版权为&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;所有，转载需取得&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;同意并在明显位置处注明出处&lt;/span&gt; 注意: 代码中的“博客的网址”与“个人信箱”改为自己的 可能上面的说明措辞有写问题，欢迎指正。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[设置Front-matter中的标签]]></title>
       <url>%2F2016%2F11%2F18%2F%E8%AE%BE%E7%BD%AEFront-matter%E4%B8%AD%E7%9A%84%E6%A0%87%E7%AD%BE%2F</url>
       <content type="text"><![CDATA[创建新page时，Front-matter只有”title” “date” “tags”, 每次都需要添加 categories 标签。于是就在想创建的页面模板在哪，在网上找一圈，发现都和自己的需要不太一样。就自己弄吧。幸亏之前在创建tagsCloud的时候瞟到了原来最上面的一层叫Front-matter。之后又查到了，每次创建文件的时候都是参照hexo的scaffolds目录下，相应的md文件，包括三个文件: post.md(新建页面参照的模板), page.md(新建page参照的模板,比如tags和about), draft.md(新建草稿参照的模板) 一点开post.md，就什么都明白了，之后高高兴兴的添上一行 categories。创建一个新的页面，果然添上了 categories 这一项。]]></content>
