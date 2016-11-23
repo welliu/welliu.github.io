@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://welliu.github.io/2016/11/23/添加网易云音乐外链直链/index.html">
 <meta property="og:site_name" content="we new">
 <meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;花了一个上午的时间，查到三种解决方法：通过 Chrome的开发者工具直接查看源码 ， 输入网址查看 ， 嗅探 。一开始我采用的也是第二种方法，而网上的大部分工具利用的都是第二种方法，不过这种方法对有些音乐来说，并不能得到正确的直链。于是就开始尝试使用嗅探，我在知乎查嗅探工具的时候正好看见一个答主，提到了开发者工具，于是联想到之前使用过Firef">
-<meta property="og:updated_time" content="2016-11-23T07:32:38.745Z">
+<meta property="og:updated_time" content="2016-11-23T07:50:52.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="添加网易云音乐外链直链">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;花了一个上午的时间，查到三种解决方法：通过 Chrome的开发者工具直接查看源码 ， 输入网址查看 ， 嗅探 。一开始我采用的也是第二种方法，而网上的大部分工具利用的都是第二种方法，不过这种方法对有些音乐来说，并不能得到正确的直链。于是就开始尝试使用嗅探，我在知乎查嗅探工具的时候正好看见一个答主，提到了开发者工具，于是联想到之前使用过Firef">
@@ -249,7 +249,6 @@
     function go() {
 
       var songs = [
-          "http://m10.music.126.net/20161123153624/2598430b9789bce94579b919178759c0/ymusic/c135/9bf3/6aec/11c580c6d5965de96f2d4c18a3c10dd3.mp3",
           "http://m2.music.126.net/O8RMqPVgtz5Qp_i1PBeBaQ==/5969248627774562.mp3",
           "http://m2.music.126.net/3HglVSQUxqesNvCL2WKBUg==/1244647162662086.mp3"
       ];
@@ -468,7 +467,7 @@
 <li>此时点击播放，会看到下面出现了音乐的真实地址</li>
 <li>用新选项卡打开网址，此时浏览器能正常播放音乐说明获取到的网址是正确的</li>
 </ol>
-<p>&#160; &#160; &#160; &#160;这种方法的时效还没有测试，不过可能临时的链接，持续的时间不会很长，但是基本上每首在曲库里能正常播放的音乐都可以获取到。</p>
+<p>&#160; &#160; &#160; &#160;这种方法的时效还没有测试，不过可能临时的链接，持续的时间不会很长，大概是半个小时之内，可以正常播放。但是基本上每首在曲库里能正常播放的音乐都可以获取到。</p>
 <h3 id="输入网址查看"><a href="#输入网址查看" class="headerlink" title="输入网址查看"></a>输入网址查看</h3><p>步骤：</p>
 <ol>
 <li>先获取歌曲id，直接打开音乐的网址，如 <a href="http://music.163.com/#/song?id=425137664" target="_blank" rel="external">http://music.163.com/#/song?id=425137664</a> ，其中id= 后面的即为歌曲id。</li>
