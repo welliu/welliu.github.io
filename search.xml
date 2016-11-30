@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[slam占个坑]]></title>
+      <url>%2F2016%2F11%2F30%2Fslam%E5%8D%A0%E4%B8%AA%E5%9D%91%2F</url>
+      <content type="text"><![CDATA[之前做的图像识别是基于sift，现在看slam比较受欢迎，先占个坑，放一些参考网站，再下载一些论文，学习一波 基本slam http://blog.exbot.net/archives/2515 http://blog.csdn.net/chuckdanglars/article/details/46722637 http://www.robots.ox.ac.uk/~SSS06/Website/index.html orb slammono slam http://blog.csdn.net/wliked/article/details/622745]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[大学项目置于Github的计划]]></title>
       <url>%2F2016%2F11%2F30%2F%E5%A4%A7%E5%AD%A6%E9%A1%B9%E7%9B%AE%E7%BD%AE%E4%BA%8EGithub%E7%9A%84%E8%AE%A1%E5%88%92%2F</url>
       <content type="text"><![CDATA[最近老师正好要用到之前一个项目的代码，可能需要修改一下，就想到把自己大学编过的一些东西整理一下，传到Github上面，就当是造福学弟学妹们了。挑几个合适的放上去，有的是自己参加比赛的想法，希望可以有人能够帮助一起完善吧，等整理好了，就会把链接贴到这篇文章最后，大家感兴趣的话，可以来踩一踩。]]></content>
