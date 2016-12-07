@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[slam占个坑]]></title>
       <url>%2F2016%2F11%2F30%2Fslam%E5%8D%A0%E4%B8%AA%E5%9D%91%2F</url>
-      <content type="text"><![CDATA[之前做的图像识别是基于sift，现在看slam比较受欢迎，先占个坑，放一些参考网站，再下载一些论文，学习一波 基本slam http://blog.exbot.net/archives/2515 http://blog.csdn.net/chuckdanglars/article/details/46722637 http://www.robots.ox.ac.uk/~SSS06/Website/index.html orb slammono slam http://blog.csdn.net/wliked/article/details/622745]]></content>
+      <content type="text"><![CDATA[之前做的图像识别是基于sift，现在看slam比较受欢迎，先占个坑，放一些参考网站，再下载一些论文，学习一波 基本slam 视觉SLAM漫谈 - 半闲居士 slam学习资料整理 - wen_hust SLAM资源收集 - 飘香一剑 SLAM第一篇：基础知识 - 高翔(我猜就是半闲居士) SLAM和MonoSLAM简介与理解，VSLAM和SFM（structure form motion）的区别 - 转载 the 2006 SLAM Summer School Homepage orb slammono slam http://blog.csdn.net/wliked/article/details/622745]]></content>
     </entry>
 
     
