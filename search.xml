@@ -3,51 +3,58 @@
   
     
     <entry>
+      <title><![CDATA[Blog添加转载声明]]></title>
+      <url>%2F2016%2F12%2F29%2FBlog%E6%B7%BB%E5%8A%A0%E8%BD%AC%E8%BD%BD%E5%A3%B0%E6%98%8E%2F</url>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;看到一个Next主题的Blog,里面基本上每一篇文章都有一个声明，出来的效果也是不错的。虽然我之前也在footer添加了版权说明，但觉得在文章结尾加声明更加合理。具体的做法就是修改 scaffolds\post.md123456789101112---title: Blog添加转载声明date: 1482981437000categories:tags:---&lt;!-- more --&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;声明: 本文转载前需与作者联系并标明出处。&lt;/blockquote&gt;这样每次新建一篇文章的时候，会将 Read-More 与 声明 自动添加上去，具体的效果可以看以下的声明。(p.s. 不多说了，我还要把之前的文章都加上声明，累觉不爱。) 声明: 本文转载前需与作者联系并标明出处。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Blog居中调整(基于Next主题)]]></title>
       <url>%2F2016%2F12%2F29%2FBlog%E5%B1%85%E4%B8%AD%E8%B0%83%E6%95%B4-%E5%9F%BA%E4%BA%8ENext%E4%B8%BB%E9%A2%98%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;今天在github上Next主题的issues碰巧看到一篇关于sidebar居中的讨论，而之前就对于主页里面 标题 和 read more 靠左感觉不舒服,想改成居中的模式。于是就在sublime里面对Next主题搜索 text-align: left， Searching 276 files for “text-align: left”，在276个文件里面找到了相关的设置 是在 themes\next\source\css_schemes\Mist_posts-expanded.styl 这个文件里面进行相关的修改。（注意我使用的是Mist场景，场景不同的小伙伴可以尝试将路径里的Mist改成自己使用的场景） 标题居中1.post-title, 改成123.post-title&#123; text-align: center;&#125; Read-More居中将.post-more-link里面的 text-align: left; 改成 text-align: center; 标签居中将.post-tags里面的 text-align: left; 改成 text-align: center;]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;今天在github上Next主题的issues碰巧看到一篇关于sidebar居中的讨论，而之前就对于主页里面 标题 和 read more 靠左感觉不舒服,想改成居中的模式。于是就在sublime里面对Next主题搜索 text-align: left， Searching 276 files for “text-align: left”，在276个文件里面找到了相关的设置 是在 themes\next\source\css\ _schemes\Mist\ _posts-expanded.styl 这个文件里面进行相关的修改。（注意我使用的是Mist场景，场景不同的小伙伴可以尝试将路径里的Mist改成自己使用的场景） 标题居中1.post-title, 改成123.post-title&#123; text-align: center;&#125; 详情居中详情 即为 “发表于 | 分类于 | 阅读次数” 等 ，而在.post-meta中text-align: $site-meta-text-align 所以需要修改 $site-meta-text-align为center。在\themes\next\source\css\ _variables\Mist.styl 文件中找到 $site-meta-text-align = left; 并修改为 $site-meta-text-align = center; 内容居中因为居中后的效果不是很好，所以我就没有改了，想改的朋友可以参考下面的步骤：在 themes\next\source\css\ _common\components\post\post-expand.styl 文件中将12.posts-expand .post-body &#123; +desktop() &#123; text-align: justify; &#125;改为12.posts-expand .post-body &#123; +desktop() &#123; text-align: center; &#125; Read-More居中将.post-more-link里面的 text-align: left; 改成 text-align: center; 标签居中将.post-tags里面的 text-align: left; 改成 text-align: center; 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[Blog隐藏成就系统]]></title>
       <url>%2F2016%2F12%2F29%2FBlog%E9%9A%90%E8%97%8F%E6%88%90%E5%B0%B1%E7%B3%BB%E7%BB%9F%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;上次在修改Header标签的时候在themes\next\languages\zh-Hans.yml文件里发现了一个神奇的东西，cheers成就系统，里面有um, ok, nice, good, great, excellent.于是我熊熊的八卦之火便一发不可收拾，直接改成了：1234567cheers: um: 非洲大酋长！ ok: 非洲部落首领！ nice: 非洲人！ good: 偷渡者！ great: 欧洲人！ excellent: 欧皇血统！&#160; &#160; &#160; &#160;看着还像这么回事！之后又在 themes\next\layout\archive.swig 里面找到了达成成就的条件(代码不完整)：123456posts_length &gt; 210 cheers = &apos;excellent&apos; elif posts_length &gt; 130 cheers = &apos;great&apos; elif posts_length &gt; 80 cheers = &apos;good&apos; elif posts_length &gt; 50 cheers = &apos;nice&apos; elif posts_length &gt; 30 cheers = &apos;ok&apos; else cheers = &apos;um&apos; 210篇才能翻身农奴把歌唱，任重而道远，加油吧！骚年!]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;上次在修改Header标签的时候在themes\next\languages\zh-Hans.yml文件里发现了一个神奇的东西，cheers成就系统，里面有um, ok, nice, good, great, excellent.于是我熊熊的八卦之火便一发不可收拾，直接改成了：1234567cheers: um: 非洲大酋长！ ok: 非洲部落首领！ nice: 非洲人！ good: 偷渡者！ great: 欧洲人！ excellent: 欧皇血统！&#160; &#160; &#160; &#160;看着还像这么回事！之后又在 themes\next\layout\archive.swig 里面找到了达成成就的条件(代码不完整)：123456posts_length &gt; 210 cheers = &apos;excellent&apos; elif posts_length &gt; 130 cheers = &apos;great&apos; elif posts_length &gt; 80 cheers = &apos;good&apos; elif posts_length &gt; 50 cheers = &apos;nice&apos; elif posts_length &gt; 30 cheers = &apos;ok&apos; else cheers = &apos;um&apos; 210篇才能翻身农奴把歌唱，任重而道远，加油吧！骚年! 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[修改Blog上面Header标签]]></title>
       <url>%2F2016%2F12%2F24%2F%E4%BF%AE%E6%94%B9Blog%E4%B8%8A%E9%9D%A2Header%E6%A0%87%E7%AD%BE%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;想把header上面的文字改掉，把原来的“关于”改成“简历”，这样清晰一点。之前做过“楽”的功能，于是第一时间想到的就是到header.swig这个文件里面找标签，很遗憾和我想的并不一样。之后想到直接在整个Blog中搜索“关于”，找到对应的文件。因为我用的是sublime，直接ctrl + shift + f 就可以在文件夹里面找了。结果在 \themes\next\languages\zh-Hans.yml 这个文件里面找到了这些文字。如果想修改的话，到这个文件里面直接替换掉相关文字就ok了。(p.s. sublime可以做很多神奇的事情，简直赞)]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;想把header上面的文字改掉，把原来的“关于”改成“简历”，这样清晰一点。之前做过“楽”的功能，于是第一时间想到的就是到header.swig这个文件里面找标签，很遗憾和我想的并不一样。之后想到直接在整个Blog中搜索“关于”，找到对应的文件。因为我用的是sublime，直接ctrl + shift + f 就可以在文件夹里面找了。结果在 \themes\next\languages\zh-Hans.yml 这个文件里面找到了这些文字。如果想修改的话，到这个文件里面直接替换掉相关文字就ok了。(p.s. sublime可以做很多神奇的事情，简直赞) 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[windows下批处理git上传]]></title>
       <url>%2F2016%2F12%2F24%2Fwindows%E4%B8%8B%E6%89%B9%E5%A4%84%E7%90%86git%E4%B8%8A%E4%BC%A0%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;老师刚用github，今天用git命令行上传文件的时候，说小项目用github客户端的话，太费事，问我用什么代码比较方便，我把用hexo上传的三行代码发给他了。123git add -v .git commit -m &quot;bat批处理上传&quot;git push origin master不过还是感觉费事，就问有没有脚本可以处理的。我参考了知乎里面的一个回答写一个bat文件，处理起来还可以，就算要输密码上传的话，也是能在命令行里面输入的。 第一步 配置git的环境变量Git装好后有个cmd目录，需要把这个cmd路径加到Windows的path环境变量下（就是系统变量）。 第二步 编写Bat文件创建push.bat文件，添加下列代码12345678910111213@echo off@title windows下批处理git上传演示set path=%path%;echo\&amp;echogit add -v .git commit -m &quot;bat批处理上传&quot;git push origin masterecho\&amp;echo done...pause需要注意的是bat文件使用的是ansi编码方式，可以在记事本另存为ansi码。 第三步 将Bat文件置于需要上传的仓库下整个过程不清楚的话，可以看知乎的这个回答，里面有截图。]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;老师刚用github，今天用git命令行上传文件的时候，说小项目用github客户端的话，太费事，问我用什么代码比较方便，我把用hexo上传的三行代码发给他了。123git add -v .git commit -m &quot;bat批处理上传&quot;git push origin master不过还是感觉费事，就问有没有脚本可以处理的。我参考了知乎里面的一个回答写一个bat文件，处理起来还可以，就算要输密码上传的话，也是能在命令行里面输入的。 第一步 配置git的环境变量Git装好后有个cmd目录，需要把这个cmd路径加到Windows的path环境变量下（就是系统变量）。 第二步 编写Bat文件创建push.bat文件，添加下列代码12345678910111213@echo off@title windows下批处理git上传演示set path=%path%;echo\&amp;echogit add -v .git commit -m &quot;bat批处理上传&quot;git push origin masterecho\&amp;echo done...pause需要注意的是bat文件使用的是ansi编码方式，可以在记事本另存为ansi码。 第三步 将Bat文件置于需要上传的仓库下整个过程不清楚的话，可以看知乎的这个回答，里面有截图。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[翻的一堵好墙]]></title>
       <url>%2F2016%2F12%2F16%2F%E7%BF%BB%E7%9A%84%E4%B8%80%E5%A0%B5%E5%A5%BD%E5%A2%99%2F</url>
-      <content type="text"><![CDATA[墙里秋千墙外道。墙外行人，墙里佳人笑。之前用的几种翻墙方式，终于被我天朝的上人们给堵住了。作为学生党，没钱很尴尬，有的又要配来配去的头疼，于是这几天找到两个easy的”梯子”，方便翻墙而去，幽会”佳人”，额额。。。我是正经人。 lantern 蓝灯到现在为止，发现的操作最简单的翻墙工具，支持win，mac，android，ubuntu (官方暂不支持iphone)。有免费版和专业版。免费版的速度也还能接受炸，不过每个月有流量限制，有点坑爹。而且发布在GitHub上，比较靠谱。lantern官网, lantern源码 iss基于shadowsocks做的，简化了不少，有免费的服务器，安装后也可以使用。不过速度上比lantern要慢不少，可以够买其他网站提供的shadowsocks服务。iss官网]]></content>
+      <content type="text"><![CDATA[墙里秋千墙外道。墙外行人，墙里佳人笑。之前用的几种翻墙方式，终于被我天朝的上人们给堵住了。作为学生党，没钱很尴尬，有的又要配来配去的头疼，于是这几天找到两个easy的”梯子”，方便翻墙而去，幽会”佳人”，额额。。。我是正经人。#### lantern 蓝灯到现在为止，发现的操作最简单的翻墙工具，支持win，mac，android，ubuntu (官方暂不支持iphone)。有免费版和专业版。免费版的速度也还能接受炸，不过每个月有流量限制，有点坑爹。而且发布在GitHub上，比较靠谱。lantern官网, lantern源码#### iss基于shadowsocks做的，简化了不少，有免费的服务器，安装后也可以使用。不过速度上比lantern要慢不少，可以够买其他网站提供的shadowsocks服务。iss官网声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[惊梦]]></title>
       <url>%2F2016%2F12%2F02%2F%E6%83%8A%E6%A2%A6%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;老师手里面有一个论文，准备最近投，需要帮忙。等老师布置完任务之后，谈了一下最近的学习计划，&#160; &#160; &#160; &#160;老师建议我暂时不要学前端，多花时间来把自己已经掌握的技能巩固住。确实我也是这么感觉的，可能是刚开始入行人普遍都有的问题，很少有人能够去真正的掌握好一门技术，总是被新的东西迷惑。前段时间学了python，又学了前端。确实贪多了。该收一收，编程水平还是得好好地提高一下。&#160; &#160; &#160; &#160;老师举的例子大家都听过，但确实很贴切，合理。一个木桶，你现在不去把这个木桶的短板补齐，现在又要去做新的木桶，你要拿哪个桶去跟别人比，结局可想而知了，写在这里，警示自己。]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;老师手里面有一个论文，准备最近投，需要帮忙。等老师布置完任务之后，谈了一下最近的学习计划，&#160; &#160; &#160; &#160;老师建议我暂时不要学前端，多花时间来把自己已经掌握的技能巩固住。确实我也是这么感觉的，可能是刚开始入行人普遍都有的问题，很少有人能够去真正的掌握好一门技术，总是被新的东西迷惑。前段时间学了python，又学了前端。确实贪多了。该收一收，编程水平还是得好好地提高一下。&#160; &#160; &#160; &#160;老师举的例子大家都听过，但确实很贴切，合理。一个木桶，你现在不去把这个木桶的短板补齐，现在又要去做新的木桶，你要拿哪个桶去跟别人比，结局可想而知了，写在这里，警示自己。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[slam占个坑]]></title>
       <url>%2F2016%2F11%2F30%2Fslam%E5%8D%A0%E4%B8%AA%E5%9D%91%2F</url>
-      <content type="text"><![CDATA[之前做的图像识别是基于sift，现在看slam比较受欢迎，先占个坑，放一些参考网站，再下载一些论文，学习一波 基本slam 视觉SLAM漫谈 - 半闲居士 slam学习资料整理 - wen_hust SLAM资源收集 - 飘香一剑 SLAM第一篇：基础知识 - 高翔(我猜就是半闲居士) SLAM和MonoSLAM简介与理解，VSLAM和SFM（structure form motion）的区别 - 转载 the 2006 SLAM Summer School Homepage orb slammono slam http://blog.csdn.net/wliked/article/details/622745]]></content>
+      <content type="text"><![CDATA[之前做的图像识别是基于sift，现在看slam比较受欢迎，先占个坑，放一些参考网站，再下载一些论文，学习一波 基本slam 视觉SLAM漫谈 - 半闲居士 slam学习资料整理 - wen_hust SLAM资源收集 - 飘香一剑 SLAM第一篇：基础知识 - 高翔(我猜就是半闲居士) SLAM和MonoSLAM简介与理解，VSLAM和SFM（structure form motion）的区别 - 转载 the 2006 SLAM Summer School Homepage orb slammono slam http://blog.csdn.net/wliked/article/details/622745 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -61,49 +68,49 @@
     <entry>
       <title><![CDATA[添加网易云音乐外链直链]]></title>
       <url>%2F2016%2F11%2F23%2F%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE%E7%9B%B4%E9%93%BE%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;花了一个上午的时间，查到三种解决方法：通过 Chrome的开发者工具直接查看源码 ， 输入网址查看 ， 嗅探 。一开始我采用的也是第二种方法，而网上的大部分工具利用的都是第二种方法，不过这种方法对有些音乐来说，并不能得到正确的直链。于是就开始尝试使用嗅探，我在知乎查嗅探工具的时候正好看见一个答主，提到了开发者工具，于是联想到之前使用过Firefox扒取过数据的经历，觉得可行，便尝试了，没想到很轻松就得到了，而且之前没成功的音乐也得到了正确的直链，下面就介绍三种方法。 通过Chrome的开发者工具直接查看源码步骤： 打开选择的要获取的网易云音乐网址 用快捷键F12或者Ctrl+Shift+I即可打开开发者工具，选择Network选项卡 此时点击播放，会看到下面出现了音乐的真实地址 用新选项卡打开网址，此时浏览器能正常播放音乐说明获取到的网址是正确的 &#160; &#160; &#160; &#160;这种方法的时效还没有测试，不过可能临时的链接，持续的时间不会很长，大概是半个小时之内，可以正常播放。但是基本上每首在曲库里能正常播放的音乐都可以获取到。 输入网址查看步骤： 先获取歌曲id，直接打开音乐的网址，如 http://music.163.com/#/song?id=425137664 ，其中id= 后面的即为歌曲id。 将下面网址中的两处id替换成的歌曲id ，http://music.163.com/api/song/detail/?id=425137664&amp;ids=[425137664]&amp;csrf_token= 将上一步中获取网址方放到地址栏中，若能正常播放音乐说明获取到的网址是正确的 &#160; &#160; &#160; &#160;这种方法的有些歌曲的并不能获得，不过时效应该很长。 嗅探这种方法，网络上应该有很多介绍就不在这里赘述了。 后记&#160; &#160; &#160; &#160;到目前为止，现在添加的功能基本上是够用了，再折腾就感觉本末倒置，没有必要了。评论和留言的功能暂时不准备添加，看到了之前人添加后，被人乱发小广告，感觉不能忍，要是自己网站上出这种问题，还不如不开。为自己来个眼清，就没开，大家有什么问题或者建议的话，可以直接发邮件给我。水平有限，但是能回答的不会藏拙。谢谢。]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;花了一个上午的时间，查到三种解决方法：通过 Chrome的开发者工具直接查看源码 ， 输入网址查看 ， 嗅探 。一开始我采用的也是第二种方法，而网上的大部分工具利用的都是第二种方法，不过这种方法对有些音乐来说，并不能得到正确的直链。于是就开始尝试使用嗅探，我在知乎查嗅探工具的时候正好看见一个答主，提到了开发者工具，于是联想到之前使用过Firefox扒取过数据的经历，觉得可行，便尝试了，没想到很轻松就得到了，而且之前没成功的音乐也得到了正确的直链，下面就介绍三种方法。 通过Chrome的开发者工具直接查看源码步骤： 打开选择的要获取的网易云音乐网址 用快捷键F12或者Ctrl+Shift+I即可打开开发者工具，选择Network选项卡 此时点击播放，会看到下面出现了音乐的真实地址 用新选项卡打开网址，此时浏览器能正常播放音乐说明获取到的网址是正确的 &#160; &#160; &#160; &#160;这种方法的时效还没有测试，不过可能临时的链接，持续的时间不会很长，大概是半个小时之内，可以正常播放。但是基本上每首在曲库里能正常播放的音乐都可以获取到。 输入网址查看步骤： 先获取歌曲id，直接打开音乐的网址，如 http://music.163.com/#/song?id=425137664 ，其中id= 后面的即为歌曲id。 将下面网址中的两处id替换成的歌曲id ，http://music.163.com/api/song/detail/?id=425137664&amp;ids=[425137664]&amp;csrf_token= 将上一步中获取网址方放到地址栏中，若能正常播放音乐说明获取到的网址是正确的 &#160; &#160; &#160; &#160;这种方法的有些歌曲的并不能获得，不过时效应该很长。 嗅探这种方法，网络上应该有很多介绍就不在这里赘述了。 后记&#160; &#160; &#160; &#160;到目前为止，现在添加的功能基本上是够用了，再折腾就感觉本末倒置，没有必要了。评论和留言的功能暂时不准备添加，看到了之前人添加后，被人乱发小广告，感觉不能忍，要是自己网站上出这种问题，还不如不开。为自己来个眼清，就没开，大家有什么问题或者建议的话，可以直接发邮件给我。水平有限，但是能回答的不会藏拙。谢谢。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[Blog添加楽功能]]></title>
       <url>%2F2016%2F11%2F22%2FBlog%E6%B7%BB%E5%8A%A0%E6%A5%BD%E5%8A%9F%E8%83%BD%2F</url>
-      <content type="text"><![CDATA[在之前主题的时候就添加过一次背景音乐，不过效果不是很好。两个缺点：首先因为是直接调用的网易云音乐的外链播放器，不能够隐藏，和整体的风格不是很搭；其次是在手机端上的浏览器时需要点击触发，效果不是很好。这次是参考了Never_Yu的High一下的实现，将他的代码中的音乐播放的部分抽离出来，效果还是不错的，下面就给出 参考的链接 和 修改后的代码：Hexo-NexT搭建个人博客（二）、Hexo-NexT搭建个人博客（三） 文件位置：\themes\next\layout_partials\header.swig代码插入位置： 在 ul 标签之间加入以下代码： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;!-- 参考Never_yu的High一下功能 网站位置：https://neveryu.github.io/2016/09/30/hexo-next-two, https://neveryu.github.io/2016/11/11/hexo-next-three/--&gt; &lt;li class=&quot;menu-item&quot;&gt; &lt;a href=&apos;javascript:( function go() &#123; var songs = [ &quot;http://m2.music.126.net/O8RMqPVgtz5Qp_i1PBeBaQ==/5969248627774562.mp3&quot;, &quot;http://m2.music.126.net/3HglVSQUxqesNvCL2WKBUg==/1244647162662086.mp3&quot;, ]; function S() &#123; var e = document.getElementById(&quot;audio_element_id&quot;); if(e != null)&#123; var index = parseInt(e.getAttribute(&quot;curSongIndex&quot;)); if(index &gt; songs.length - 2) &#123; index = 0; &#125; else &#123; index++; &#125; e.setAttribute(&quot;curSongIndex&quot;, index); &#125; e.src = i; e.play() &#125; function initAudioEle() &#123; var e = document.getElementById(&quot;audio_element_id&quot;); if(e === null)&#123; e = document.createElement(&quot;audio&quot;); e.setAttribute(&quot;curSongIndex&quot;, 0); e.id = &quot;audio_element_id&quot;; e.loop = false; e.bgcolor = 0; e.innerHTML = &quot; &lt;p&gt;If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.&lt;/p&gt; &lt;p&gt;&quot;; document.body.appendChild(e); e.addEventListener(&quot;ended&quot;, function() &#123; go(); &#125;, true); &#125; &#125; initAudioEle(); var curSongIndex = parseInt(document.getElementById(&quot;audio_element_id&quot;).getAttribute(&quot;curSongIndex&quot;)); var i = songs[curSongIndex]; S(); &#125;)()&apos;&gt; &lt;i class=&quot;menu-item-icon fa fa-music fa-fw&quot;&gt;&lt;/i&gt;楽&lt;/a&gt; &lt;/li&gt;&lt;!-- end High一下 --&gt; 想添加别的音乐的话，需要直接在代码中修改 var songs = [ ] 的网址。需要注意的是网址需要的音乐是直链外链，我用的网易云音乐，但是并不能直接复制网址来，我是从csdn上下载了一个外链获取的小工具，等我这几天查一下，看能不能给出源码，发到博客上。 (p.s. 自从加上了这个功能，这个Blog我可以待一整天==)]]></content>
+      <content type="text"><![CDATA[在之前主题的时候就添加过一次背景音乐，不过效果不是很好。两个缺点：首先因为是直接调用的网易云音乐的外链播放器，不能够隐藏，和整体的风格不是很搭；其次是在手机端上的浏览器时需要点击触发，效果不是很好。这次是参考了Never_Yu的High一下的实现，将他的代码中的音乐播放的部分抽离出来，效果还是不错的，下面就给出 参考的链接 和 修改后的代码：Hexo-NexT搭建个人博客（二）、Hexo-NexT搭建个人博客（三） 文件位置：\themes\next\layout_partials\header.swig代码插入位置： 在 ul 标签之间加入以下代码： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455&lt;!-- 参考Never_yu的High一下功能 网站位置：https://neveryu.github.io/2016/09/30/hexo-next-two, https://neveryu.github.io/2016/11/11/hexo-next-three/--&gt; &lt;li class=&quot;menu-item&quot;&gt; &lt;a href=&apos;javascript:( function go() &#123; var songs = [ &quot;http://m2.music.126.net/O8RMqPVgtz5Qp_i1PBeBaQ==/5969248627774562.mp3&quot;, &quot;http://m2.music.126.net/3HglVSQUxqesNvCL2WKBUg==/1244647162662086.mp3&quot;, ]; function S() &#123; var e = document.getElementById(&quot;audio_element_id&quot;); if(e != null)&#123; var index = parseInt(e.getAttribute(&quot;curSongIndex&quot;)); if(index &gt; songs.length - 2) &#123; index = 0; &#125; else &#123; index++; &#125; e.setAttribute(&quot;curSongIndex&quot;, index); &#125; e.src = i; e.play() &#125; function initAudioEle() &#123; var e = document.getElementById(&quot;audio_element_id&quot;); if(e === null)&#123; e = document.createElement(&quot;audio&quot;); e.setAttribute(&quot;curSongIndex&quot;, 0); e.id = &quot;audio_element_id&quot;; e.loop = false; e.bgcolor = 0; e.innerHTML = &quot; &lt;p&gt;If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.&lt;/p&gt; &lt;p&gt;&quot;; document.body.appendChild(e); e.addEventListener(&quot;ended&quot;, function() &#123; go(); &#125;, true); &#125; &#125; initAudioEle(); var curSongIndex = parseInt(document.getElementById(&quot;audio_element_id&quot;).getAttribute(&quot;curSongIndex&quot;)); var i = songs[curSongIndex]; S(); &#125;)()&apos;&gt; &lt;i class=&quot;menu-item-icon fa fa-music fa-fw&quot;&gt;&lt;/i&gt;楽&lt;/a&gt; &lt;/li&gt;&lt;!-- end High一下 --&gt; 想添加别的音乐的话，需要直接在代码中修改 var songs = [ ] 的网址。需要注意的是网址需要的音乐是直链外链，我用的网易云音乐，但是并不能直接复制网址来，我是从csdn上下载了一个外链获取的小工具，等我这几天查一下，看能不能给出源码，发到博客上。 (p.s. 自从加上了这个功能，这个Blog我可以待一整天==) 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[九月结束时，请把我唤醒]]></title>
       <url>%2F2016%2F11%2F20%2F%E4%B9%9D%E6%9C%88%E7%BB%93%E6%9D%9F%E6%97%B6%EF%BC%8C%E8%AF%B7%E6%8A%8A%E6%88%91%E5%94%A4%E9%86%92%2F</url>
-      <content type="text"><![CDATA[Wake Me Up When September Ends，Green Day用这首歌把我唤醒 Summer has come and passed夏日到来 复又离去The innocent can never last天真岁月岂能永驻wake me up when september ends九月结束时 请唤醒我like my fathers come to pass就像我们的父辈已经远去seven years has gone so fast七年时光匆匆而过wake me up when september ends九月结束时 请唤醒我here comes the rain again此刻雨又再次falling from the stars从星空坠落drenched in my pain again再次浸透我的痛苦becoming who we are成为了现在的我们as my memory rests当我的记忆沉寂but never forgets what I lost却绝不忘记失去的东西wake me up when september ends九月结束时 请唤醒我summer has come and passed夏日到来 复又离去the innocent can never last天真岁月岂能永驻wake me up when september ends九月结束时 请唤醒我ring out the bells again我们再次敲响钟声like we did when spring began如在春日之始wake me up when september ends九月结束时 请唤醒我here comes the rain again此刻雨又再次falling from the stars从星空坠落drenched in my pain again再次浸透我的痛苦becoming who we are成为了现在的我们as my memory rests当我的记忆沉寂but never forgets what I lost却绝不忘记失去的东西wake me up when september ends九月结束时 请唤醒我Summer has come and passed夏日到来 复又离去The innocent can never last天真岁月岂能永驻wake me up when september ends九月结束时 请唤醒我like my father’s come to pass就像我们的父辈已经远去twenty years has gone so fast二十年时光匆匆而过wake me up when september ends九月结束时 请唤醒我wake me up when september ends九月结束时 请唤醒我wake me up when september ends九月结束时 请唤醒我]]></content>
+      <content type="text"><![CDATA[Wake Me Up When September Ends，Green Day用这首歌把我唤醒 Summer has come and passed夏日到来 复又离去The innocent can never last天真岁月岂能永驻wake me up when september ends九月结束时 请唤醒我like my fathers come to pass就像我们的父辈已经远去seven years has gone so fast七年时光匆匆而过wake me up when september ends九月结束时 请唤醒我here comes the rain again此刻雨又再次falling from the stars从星空坠落drenched in my pain again再次浸透我的痛苦becoming who we are成为了现在的我们as my memory rests当我的记忆沉寂but never forgets what I lost却绝不忘记失去的东西wake me up when september ends九月结束时 请唤醒我summer has come and passed夏日到来 复又离去the innocent can never last天真岁月岂能永驻wake me up when september ends九月结束时 请唤醒我ring out the bells again我们再次敲响钟声like we did when spring began如在春日之始wake me up when september ends九月结束时 请唤醒我here comes the rain again此刻雨又再次falling from the stars从星空坠落drenched in my pain again再次浸透我的痛苦becoming who we are成为了现在的我们as my memory rests当我的记忆沉寂but never forgets what I lost却绝不忘记失去的东西wake me up when september ends九月结束时 请唤醒我Summer has come and passed夏日到来 复又离去The innocent can never last天真岁月岂能永驻wake me up when september ends九月结束时 请唤醒我like my father’s come to pass就像我们的父辈已经远去twenty years has gone so fast二十年时光匆匆而过wake me up when september ends九月结束时 请唤醒我wake me up when september ends九月结束时 请唤醒我wake me up when september ends九月结束时 请唤醒我 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[你和成功只差一个Turnin']]></title>
       <url>%2F2016%2F11%2F20%2F%E4%BD%A0%E5%92%8C%E6%88%90%E5%8A%9F%E5%8F%AA%E5%B7%AE%E4%B8%80%E4%B8%AATurnin%2F</url>
-      <content type="text"><![CDATA[最爱的一首，没有之一。让内心震颤的歌。正视苦难，充满希望！！！ If you’ve been just staring at the sunrise above this hollow town如若你时常凝望这空城之上，静待旭日东升been chasing empty memories, the kind that’s keeping you down又终日追随着虚无的回忆，浪费光阴也只会让你止步不前can’t seem to find your strife, just trying to live your life既然挑无自己的违和之处，那只管好好生活便是been feeling suffocated, searching for vindication也曾苟延残喘，只得寻觅一份辩护之书this sense of indecision ain’t what we had in mind这种优柔寡断，才不该在你我脑海中扎营the dream that I envisioned, I am still hoping to find那个我心心念念的梦啊，如今我仍想把它找到you ain’t done nothing wrong but we ain’t done nothing right你并非毫无过错，但我们也绝非一事无成I know that something’s missing我明白，有些东西早已被我错过but the world will keep on turning turning但地球只是照旧在转、转、转you gotta keep that fire burning burning你势必让心火继续燃、燃、燃I know you think you’re in a hurry我知，你总觉着自己如今正是栖栖遑遑there’s no need to worry其实本就毋须慌乱cause I can feel it turning turning我有预感，剧情正在反转our luck is turning around好运终将归来chasing these empty verses, some rows have crooked signs跟着这首歌的节奏吧，虽然总有几行看着不太美好we’re losing all this daylight but soon the moon’s gonna rise纵是日落西山，光芒散尽，但一轮新月正冉冉高升these final puzzle pieces, we tried but they’re too tight这最终谜题便是，你我早已全力以赴，却还是逃不开它们的紧追不舍but if we ease the pressure, I bet they’ll fit just right不过你我若是能享受这重压，我断言这些定会契合完美sometimes it takes some patience, sometimes it works first try有时总需几分耐心，有时又需几分勇气but I know that this is worth it, cause this dream’s too strong to die可我懂得，一切都不会毫无意义，毕竟生命不息，梦想不死I ain’t done nothing wrong but we ain’t done nothing right我也并非毫无过错，但我们也绝非一事无成one day we’ll find what’s missing终有一天，我们会弥补缺憾but the world will keep on turning turning但地球只是照旧在转、转、转you gotta keep that fire burning burning你势必让心火继续燃、燃、燃I know you think you’re in a hurry我知，你总觉着自己如今正是栖栖遑遑there’s no need to worry其实本就毋须慌乱cause I can feel it turning turning我有预感，剧情正在反转our luck is turning around好运终将归来our luck is turning around我们终将时来运转our luck is turning around我们终将时来运转our luck is turning around我们终将时来运转I’ve been in, I’ve been out我曾入世，亦曾出世I’ve been low, beaten down我曾被击倒，身居谷底I’ve been lost now I’m found我曾失掉自我，可如今我已找回this fire is burning us这星火，燃起你我心火still staring at the sunrise, missing that hollow town仍旧凝望着朝阳缓升，只是空城不再feeling those empty memories but nothing’s holding me down还是舍不去过往回忆，可已心无羁绊I hope you find your strife, just go and live your life愿你坎坷之时，仍旧前行，仍旧好好生活I’m feeling vindicated你我并无罪过the world will keep on turning turning地球运转不息you better keep that fire burning burning心火绝不可熄I know you think you’re in a hurry我懂，你时常碌碌终日而无所得there’s no need to worry可是你也别自乱阵脚cause I can feel it turning turning我能确定，命数自有天定our luck is turning around (turning turning)我们终将时来运转our luck is turning around (turning turning)我们终将时来运转our luck is turning around (turning turning)我们终将时来运转I’ve been in, I’ve been out我曾入世，亦曾出世I’ve been low, beaten down我曾被击倒，身居谷底I’ve been lost now I’m found我曾失掉自我，可如今我已找回our luck is turning around我们终将时来运转]]></content>
+      <content type="text"><![CDATA[最爱的一首，没有之一。让内心震颤的歌。正视苦难，充满希望！！！ If you’ve been just staring at the sunrise above this hollow town如若你时常凝望这空城之上，静待旭日东升been chasing empty memories, the kind that’s keeping you down又终日追随着虚无的回忆，浪费光阴也只会让你止步不前can’t seem to find your strife, just trying to live your life既然挑无自己的违和之处，那只管好好生活便是been feeling suffocated, searching for vindication也曾苟延残喘，只得寻觅一份辩护之书this sense of indecision ain’t what we had in mind这种优柔寡断，才不该在你我脑海中扎营the dream that I envisioned, I am still hoping to find那个我心心念念的梦啊，如今我仍想把它找到you ain’t done nothing wrong but we ain’t done nothing right你并非毫无过错，但我们也绝非一事无成I know that something’s missing我明白，有些东西早已被我错过but the world will keep on turning turning但地球只是照旧在转、转、转you gotta keep that fire burning burning你势必让心火继续燃、燃、燃I know you think you’re in a hurry我知，你总觉着自己如今正是栖栖遑遑there’s no need to worry其实本就毋须慌乱cause I can feel it turning turning我有预感，剧情正在反转our luck is turning around好运终将归来chasing these empty verses, some rows have crooked signs跟着这首歌的节奏吧，虽然总有几行看着不太美好we’re losing all this daylight but soon the moon’s gonna rise纵是日落西山，光芒散尽，但一轮新月正冉冉高升these final puzzle pieces, we tried but they’re too tight这最终谜题便是，你我早已全力以赴，却还是逃不开它们的紧追不舍but if we ease the pressure, I bet they’ll fit just right不过你我若是能享受这重压，我断言这些定会契合完美sometimes it takes some patience, sometimes it works first try有时总需几分耐心，有时又需几分勇气but I know that this is worth it, cause this dream’s too strong to die可我懂得，一切都不会毫无意义，毕竟生命不息，梦想不死I ain’t done nothing wrong but we ain’t done nothing right我也并非毫无过错，但我们也绝非一事无成one day we’ll find what’s missing终有一天，我们会弥补缺憾but the world will keep on turning turning但地球只是照旧在转、转、转you gotta keep that fire burning burning你势必让心火继续燃、燃、燃I know you think you’re in a hurry我知，你总觉着自己如今正是栖栖遑遑there’s no need to worry其实本就毋须慌乱cause I can feel it turning turning我有预感，剧情正在反转our luck is turning around好运终将归来our luck is turning around我们终将时来运转our luck is turning around我们终将时来运转our luck is turning around我们终将时来运转I’ve been in, I’ve been out我曾入世，亦曾出世I’ve been low, beaten down我曾被击倒，身居谷底I’ve been lost now I’m found我曾失掉自我，可如今我已找回this fire is burning us这星火，燃起你我心火still staring at the sunrise, missing that hollow town仍旧凝望着朝阳缓升，只是空城不再feeling those empty memories but nothing’s holding me down还是舍不去过往回忆，可已心无羁绊I hope you find your strife, just go and live your life愿你坎坷之时，仍旧前行，仍旧好好生活I’m feeling vindicated你我并无罪过the world will keep on turning turning地球运转不息you better keep that fire burning burning心火绝不可熄I know you think you’re in a hurry我懂，你时常碌碌终日而无所得there’s no need to worry可是你也别自乱阵脚cause I can feel it turning turning我能确定，命数自有天定our luck is turning around (turning turning)我们终将时来运转our luck is turning around (turning turning)我们终将时来运转our luck is turning around (turning turning)我们终将时来运转I’ve been in, I’ve been out我曾入世，亦曾出世I’ve been low, beaten down我曾被击倒，身居谷底I’ve been lost now I’m found我曾失掉自我，可如今我已找回our luck is turning around我们终将时来运转 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[谈信仰（未完）]]></title>
       <url>%2F2016%2F11%2F20%2F%E8%B0%88%E4%BF%A1%E4%BB%B0%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;什么是信仰？无论什么苦难险阻都支撑自己走下去的是什么？无论成功或者失败都会让自己抱头痛哭的是什么？无论是身在何处都让自己保持谦卑的是什么？&#160; &#160; &#160; &#160;不管你是亿万沙子中最平凡的一粒，还是亿万星辰中最闪亮的一颗，有了信仰，你便是你自己。但是有了信仰，你便会发现一切都不再那么容易获得，你便会发现痛苦从未如此的深刻，快乐也从未如此的感人，你便会发现代价不会再被计较，你便会发现付出也是开心的，你便会发现自己从未如此真实的活在这个世间。&#160; &#160; &#160; &#160;信仰不是目标，它不可被具象，只能被感受。离目标越近便离信仰越远，当你认为到达时，你便永远的失去了它。我们什么时候信仰离最近，便是最初的时候。所以需要时时清空自己，反思自己。]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;什么是信仰？无论什么苦难险阻都支撑自己走下去的是什么？无论成功或者失败都会让自己抱头痛哭的是什么？无论是身在何处都让自己保持谦卑的是什么？&#160; &#160; &#160; &#160;不管你是亿万沙子中最平凡的一粒，还是亿万星辰中最闪亮的一颗，有了信仰，你便是你自己。但是有了信仰，你便会发现一切都不再那么容易获得，你便会发现痛苦从未如此的深刻，快乐也从未如此的感人，你便会发现代价不会再被计较，你便会发现付出也是开心的，你便会发现自己从未如此真实的活在这个世间。&#160; &#160; &#160; &#160;信仰不是目标，它不可被具象，只能被感受。离目标越近便离信仰越远，当你认为到达时，你便永远的失去了它。我们什么时候信仰离最近，便是最初的时候。所以需要时时清空自己，反思自己。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[在hexo博客foot位置处添加版权说明]]></title>
       <url>%2F2016%2F11%2F18%2F%E5%9C%A8hexo%E5%8D%9A%E5%AE%A2foot%E4%BD%8D%E7%BD%AE%E5%A4%84%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E8%AF%B4%E6%98%8E%2F</url>
-      <content type="text"><![CDATA[想加一个版权说明，其实在主题配置文件中大概是160行处已经有了，只要把 creative_commons: by-nc-sa 这句的注释去掉，然后就可以在侧栏的位置处，出现一个cc图标点击就可以链接到网站。不过感觉那个版权的内容不太适合，就自己在foot的位置处，添加了一行 版权说明。参考了 Codeagles的文章(Hexo-Next底部更改) 步骤: 打开 \themes\next\layout_partials\下面的footer.swig文件 找到 1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt;&lt;/span&gt; 更改为1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt; &lt;a class=&quot;theme-link&quot; href=&quot;博客的网址&quot;&gt;本站&lt;/a&gt;作品版权为&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;所有，转载需取得&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;同意并在明显位置处注明出处&lt;/span&gt; 注意: 代码中的“博客的网址”与“个人信箱”改为自己的 可能版权的说明措辞写的会有问题，欢迎指正。]]></content>
+      <content type="text"><![CDATA[想加一个版权说明，其实在主题配置文件中大概是160行处已经有了，只要把 creative_commons: by-nc-sa 这句的注释去掉，然后就可以在侧栏的位置处，出现一个cc图标点击就可以链接到网站。不过感觉那个版权的内容不太适合，就自己在foot的位置处，添加了一行 版权说明。参考了 Codeagles的文章(Hexo-Next底部更改) 步骤: 打开 \themes\next\layout_partials\下面的footer.swig文件 找到 1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt;&lt;/span&gt; 更改为1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt; &lt;a class=&quot;theme-link&quot; href=&quot;博客的网址&quot;&gt;本站&lt;/a&gt;作品版权为&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;所有，转载需取得&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;同意并在明显位置处注明出处&lt;/span&gt; 注意: 代码中的“博客的网址”与“个人信箱”改为自己的 可能版权的说明措辞写的会有问题，欢迎指正。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[设置Front-matter中的标签]]></title>
       <url>%2F2016%2F11%2F18%2F%E8%AE%BE%E7%BD%AEFront-matter%E4%B8%AD%E7%9A%84%E6%A0%87%E7%AD%BE%2F</url>
-      <content type="text"><![CDATA[创建新page时，Front-matter只有”title” “date” “tags”, 每次都需要添加 categories 标签。于是就在想创建的页面模板在哪，在网上找一圈，发现都和自己的需要不太一样。就自己弄吧。幸亏之前在创建tagsCloud的时候瞟到了原来最上面的一层叫Front-matter。之后又查到了，每次创建文件的时候都是参照hexo的scaffolds目录下，相应的md文件，包括三个文件: post.md(新建页面参照的模板), page.md(新建page参照的模板,比如tags和about), draft.md(新建草稿参照的模板) 一点开post.md，就什么都明白了，之后高高兴兴的添上一行 categories。创建一个新的页面，果然添上了 categories 这一项。]]></content>
+      <content type="text"><![CDATA[创建新page时，Front-matter只有”title” “date” “tags”, 每次都需要添加 categories 标签。于是就在想创建的页面模板在哪，在网上找一圈，发现都和自己的需要不太一样。就自己弄吧。幸亏之前在创建tagsCloud的时候瞟到了原来最上面的一层叫Front-matter。之后又查到了，每次创建文件的时候都是参照hexo的scaffolds目录下，相应的md文件，包括三个文件: post.md(新建页面参照的模板), page.md(新建page参照的模板,比如tags和about), draft.md(新建草稿参照的模板) 一点开post.md，就什么都明白了，之后高高兴兴的添上一行 categories。创建一个新的页面，果然添上了 categories 这一项。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -117,35 +124,35 @@
     <entry>
       <title><![CDATA[hexo创建新日志时，自动调用编辑器打开]]></title>
       <url>%2F2016%2F11%2F18%2Fhexo%E5%88%9B%E5%BB%BA%E6%96%B0%E6%97%A5%E5%BF%97%E6%97%B6%EF%BC%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%2F</url>
-      <content type="text"><![CDATA[每次 用 hexo new “pagename” 创建完文章，之后还要到source目录下找到新建的文章，在用编辑器打开，简直是神烦。之后看到了wanghao大神的一篇文章(Hexo添加文章时自动打开编辑器)以及留评论的大神，终于是把这个问题比较完美的解决了。如果是windows平台的Hexo用户，步骤是: 在Hexo目录下，创建scripts目录 在scripts目录下，创建一个JavaScript文件，可任意命名如auto-open-new-articles.js 向新建的js文件中写入一下代码 123456789101112 var _exec = require(&apos;child_process&apos;).exec;//使用命令 hexo version 来查看自己的hexo版本// Hexo 2.x 用户复制这段hexo.on(&apos;new&apos;, function(path)&#123;_exec(&apos;start &quot;&quot; &quot;markdown编辑器绝对路径.exe&quot; &apos; + path);&#125;);// Hexo 3 用户复制这段hexo.on(&apos;new&apos;, function(data)&#123;_exec(&apos;start &quot;&quot; &quot;markdown编辑器绝对路径.exe&quot; &apos; + data.path);&#125;); 注意：代码中 markdown编辑器绝对路径.exe 要改成自己编辑器的路径，并且使用双斜杠，比如 12D:\Program Files\Sublime Text 3\sublime_text.exe 改成D:\\Program Files\\Sublime Text 3\\sublime_text.exe 因为博主本人是windows端的，测试的是windows端的js，如果是Mac的用户的话，就直接进这个链接，wanghao大神的博客里面写的很清楚。如果mac没有搭建成功的话，可以看看下面的评论，评论里面也给出了解决方案。]]></content>
+      <content type="text"><![CDATA[每次 用 hexo new “pagename” 创建完文章，之后还要到source目录下找到新建的文章，在用编辑器打开，简直是神烦。之后看到了wanghao大神的一篇文章(Hexo添加文章时自动打开编辑器)以及留评论的大神，终于是把这个问题比较完美的解决了。如果是windows平台的Hexo用户，步骤是: 在Hexo目录下，创建scripts目录 在scripts目录下，创建一个JavaScript文件，可任意命名如auto-open-new-articles.js 向新建的js文件中写入一下代码 123456789101112 var _exec = require(&apos;child_process&apos;).exec;//使用命令 hexo version 来查看自己的hexo版本// Hexo 2.x 用户复制这段hexo.on(&apos;new&apos;, function(path)&#123;_exec(&apos;start &quot;&quot; &quot;markdown编辑器绝对路径.exe&quot; &apos; + path);&#125;);// Hexo 3 用户复制这段hexo.on(&apos;new&apos;, function(data)&#123;_exec(&apos;start &quot;&quot; &quot;markdown编辑器绝对路径.exe&quot; &apos; + data.path);&#125;); 注意：代码中 markdown编辑器绝对路径.exe 要改成自己编辑器的路径，并且使用双斜杠，比如 12D:\Program Files\Sublime Text 3\sublime_text.exe 改成D:\\Program Files\\Sublime Text 3\\sublime_text.exe 因为博主本人是windows端的，测试的是windows端的js，如果是Mac的用户的话，就直接进这个链接，wanghao大神的博客里面写的很清楚。如果mac没有搭建成功的话，可以看看下面的评论，评论里面也给出了解决方案。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[一夜在 BeiJing]]></title>
       <url>%2F2016%2F11%2F17%2F%E4%B8%80%E5%A4%9C%E5%9C%A8BeiJing%2F</url>
-      <content type="text"><![CDATA[hahah，One Night in 北京，现在才认真听，罪过罪过，原来这首才是信的封神之作 One Night in 北京我留下许多情不管你爱与不爱都是历史的尘埃]]></content>
+      <content type="text"><![CDATA[hahah，One Night in 北京，现在才认真听，罪过罪过，原来这首才是信的封神之作 One Night in 北京我留下许多情不管你爱与不爱都是历史的尘埃 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[说一首 晚安]]></title>
       <url>%2F2016%2F11%2F17%2F%E8%AF%B4%E4%B8%80%E9%A6%96-%E6%99%9A%E5%AE%89%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;丢火车乐队的《晚安》，如果毕业晚会有机会上的话，我想我会选这首歌。 晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边想说的话都没有说完 还是会有些遗憾这一生 有些短 晚安晚安 在醒来之前 我才会说出再见晚安 在天亮之后 那事非与你无关我们离开荒芜的绿洲回到没有阳光的白昼你醒了 尽管我所有的美梦都没做完你会不会突然地想起我在某个没有睡意的清醒时刻想把身上所有枷锁 全部挣脱只为自己做了选择你会不会突然地忘记了就这样等待到底是为了什么不安的心 渐渐干涸 失去了颜色再也不会想起我 晚安晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边我们离开荒芜的绿洲回到没有阳光的白昼你醒了 尽管我所有的美梦都没做完晚安 晚安晚安 晚安晚安 晚安晚安向沉睡自己告别你会不会突然地想起我在某个没有睡意的清醒时刻想把身上所有枷锁 全部挣脱只为自己做了选择你会不会突然地忘记了就这样等待到底是为了什么不安的心 渐渐干涸 失去了颜色再也不会想起我晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;丢火车乐队的《晚安》，如果毕业晚会有机会上的话，我想我会选这首歌。 晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边想说的话都没有说完 还是会有些遗憾这一生 有些短 晚安晚安 在醒来之前 我才会说出再见晚安 在天亮之后 那事非与你无关我们离开荒芜的绿洲回到没有阳光的白昼你醒了 尽管我所有的美梦都没做完你会不会突然地想起我在某个没有睡意的清醒时刻想把身上所有枷锁 全部挣脱只为自己做了选择你会不会突然地忘记了就这样等待到底是为了什么不安的心 渐渐干涸 失去了颜色再也不会想起我 晚安晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边我们离开荒芜的绿洲回到没有阳光的白昼你醒了 尽管我所有的美梦都没做完晚安 晚安晚安 晚安晚安 晚安晚安向沉睡自己告别你会不会突然地想起我在某个没有睡意的清醒时刻想把身上所有枷锁 全部挣脱只为自己做了选择你会不会突然地忘记了就这样等待到底是为了什么不安的心 渐渐干涸 失去了颜色再也不会想起我晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[我在安河桥北]]></title>
       <url>%2F2016%2F11%2F17%2F%E6%88%91%E5%9C%A8%E5%AE%89%E6%B2%B3%E6%A1%A5%E5%8C%97%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;直到前几天才好好听完整个《安河桥北》，听完简直是感受颇多。感觉这种高质量的华语专辑至少要5年才能出一张（当然得把我周董除外）。几首里面个人比较喜欢的有 莉莉安，鸽子，关忆北，安河桥。可能是董小姐和斑马斑马听多了，所以就少了点感觉。这几首歌循环了两天，不过前一天听的比较多的是安河桥和关忆北，后一天听的比较多的是莉莉安和鸽子。 我知道 那些夏天 就像青春一样回不来碎了漫天的往事如烟 与世无争昨天我数到第二十五颗星星在北京第二十五个秋天的夜晚收得下过去 也给得了未来他们在别有用心的生活里 翩翩舞蹈你在我后半生的城市里 长生不老如果你看到他回到海岸就请你告诉他你的名字我的名字莉莉安 可惜了，胖子]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;直到前几天才好好听完整个《安河桥北》，听完简直是感受颇多。感觉这种高质量的华语专辑至少要5年才能出一张（当然得把我周董除外）。几首里面个人比较喜欢的有 莉莉安，鸽子，关忆北，安河桥。可能是董小姐和斑马斑马听多了，所以就少了点感觉。这几首歌循环了两天，不过前一天听的比较多的是安河桥和关忆北，后一天听的比较多的是莉莉安和鸽子。 我知道 那些夏天 就像青春一样回不来碎了漫天的往事如烟 与世无争昨天我数到第二十五颗星星在北京第二十五个秋天的夜晚收得下过去 也给得了未来他们在别有用心的生活里 翩翩舞蹈你在我后半生的城市里 长生不老如果你看到他回到海岸就请你告诉他你的名字我的名字莉莉安 可惜了，胖子 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[与奶糕老师的话]]></title>
       <url>%2F2016%2F11%2F17%2F%E4%B8%8E%E5%A5%B6%E7%B3%95%E8%80%81%E5%B8%88%E7%9A%84%E8%AF%9D%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;奶糕老师本名姓金，大一的时候教的我数电模电，为人和蔼。大二的时候，不知是什么原因，感觉得做做项目，感觉老师比较好说话，就和老师联系了。确实当时那个决定很正确，我也是很幸运。之后大二、大三在老师手下做了不少项目，接触到了许多学者，也亲眼见证了师兄师姐们的成功。&#160; &#160; &#160; &#160;今天去老师的办公室谈了谈自己的毕业论文，恰巧几个同级的毕业生也在，小学弟也在。因为之前从大二开始就是和老师做项目，包括一些老师和师兄师姐的论文有时候也提供一些思路，所以和奶糕老师是比较亲厚的。看到同届的同学都在那恭恭敬敬的，自己也是有些小小的自得吧。等老师布置完任务之后，把我和学弟留下来谈了谈。我说了一些前段时间自己在实习期间的感悟吧，学弟说了自己在项目中的问题。老师先谈了谈自己求学时的经历以及自己孩子的成长过程来告诫我和学弟要能真正的静下心来踏实做事，做一个善良有担当的人。确实之前老师经常和我们谈论做人的一些道理，记住却没能真正体悟到，这次再和老师谈这些，感悟更加深刻。 &#160; &#160; &#160; &#160;临走的时候，老师说听了你说你的情况，现在我就放心了。师者，传道授业解惑。我会把您的教导一直记住，践行到我的生活中，工作中。]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;奶糕老师本名姓金，大一的时候教的我数电模电，为人和蔼。大二的时候，不知是什么原因，感觉得做做项目，感觉老师比较好说话，就和老师联系了。确实当时那个决定很正确，我也是很幸运。之后大二、大三在老师手下做了不少项目，接触到了许多学者，也亲眼见证了师兄师姐们的成功。&#160; &#160; &#160; &#160;今天去老师的办公室谈了谈自己的毕业论文，恰巧几个同级的毕业生也在，小学弟也在。因为之前从大二开始就是和老师做项目，包括一些老师和师兄师姐的论文有时候也提供一些思路，所以和奶糕老师是比较亲厚的。看到同届的同学都在那恭恭敬敬的，自己也是有些小小的自得吧。等老师布置完任务之后，把我和学弟留下来谈了谈。我说了一些前段时间自己在实习期间的感悟吧，学弟说了自己在项目中的问题。老师先谈了谈自己求学时的经历以及自己孩子的成长过程来告诫我和学弟要能真正的静下心来踏实做事，做一个善良有担当的人。确实之前老师经常和我们谈论做人的一些道理，记住却没能真正体悟到，这次再和老师谈这些，感悟更加深刻。 &#160; &#160; &#160; &#160;临走的时候，老师说听了你说你的情况，现在我就放心了。师者，传道授业解惑。我会把您的教导一直记住，践行到我的生活中，工作中。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -159,7 +166,7 @@
     <entry>
       <title><![CDATA[Blog完善]]></title>
       <url>%2F2016%2F11%2F17%2FBlog%E5%AE%8C%E5%96%84%2F</url>
-      <content type="text"><![CDATA[前几天，把主题改成了Next，之后又参考了几个大触的Blog搭建，终于算是把自己想要的功能都给完善出来了。怎么样才能找到大触们呢，百度有时候不靠谱，换了无数个关键词有时候还是那几个解决方法，一个比较靠谱的办法就是 从iissnan大神（Next主题的作者）github的Next主题仓库里看Issues ，从里面找，多半可以找到解决的办法。先来几个主要参考的博客： wanghao大神的Blog搭建方案(点击进入博客)整个Next主题的统计方案，应该就是这个大神给出的，牛的不行！ ehlxr大神的Blog搭建方案(点击进入博客)主要是 搜索服务，博客置顶，头像圆形旋转；不过该神博客里面的配置文件里面的链接有的是失效的，应该是被搬进private里面的。 neveryu大神的Blog搭建方案(点击进入博客)良心大神，主要是 背景设置 等，里面的配置链接亲测有效，简直良心]]></content>
+      <content type="text"><![CDATA[前几天，把主题改成了Next，之后又参考了几个大触的Blog搭建，终于算是把自己想要的功能都给完善出来了。怎么样才能找到大触们呢，百度有时候不靠谱，换了无数个关键词有时候还是那几个解决方法，一个比较靠谱的办法就是 从iissnan大神（Next主题的作者）github的Next主题仓库里看Issues ，从里面找，多半可以找到解决的办法。先来几个主要参考的博客： wanghao大神的Blog搭建方案(点击进入博客)整个Next主题的统计方案，应该就是这个大神给出的，牛的不行！ ehlxr大神的Blog搭建方案(点击进入博客)主要是 搜索服务，博客置顶，头像圆形旋转；不过该神博客里面的配置文件里面的链接有的是失效的，应该是被搬进private里面的。 neveryu大神的Blog搭建方案(点击进入博客)良心大神，主要是 背景设置 等，里面的配置链接亲测有效，简直良心 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -173,84 +180,84 @@
     <entry>
       <title><![CDATA[Blog日志]]></title>
       <url>%2F2016%2F11%2F15%2FBlog%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD%E6%97%A5%E5%BF%97%2F</url>
-      <content type="text"><![CDATA[基本上都是失败了，主要是添加整个的yilia主题经过作者的一次修改以后，结构和之前有些不同，参考之前的文章，功能并不能很好的实现。而我之前并没有系统的学过前端，所以不敢瞎弄，可能等接下来的一段时间我了解了hexo的原理并且自己开始尝试做主题之后会将这些功能添加Blog上。 未能成功添加返回顶部按钮解决方案参考网址添加之后，返回顶部按钮可以显示，但是单击之后并无响应，而且点击”所有文章”后，出现的抽屉滑块中也会出现返回顶部按钮。原因是 yilia中source文件与source-src文件的关系不清晰。具体的就是totop.js的添加目录，以及after_footer.ejs中对totop.js的引用。 未能成功添加目录解决方案参考网址目录的结构和预想的并不一样，打算的是 类似于 Next主题一样，在点开文章后，会出现 文章目录与站点概览 未能成功被百度收录解决方案参考网址主要github屏蔽了百度爬虫，如果需要解决这个问题的话可能需要弄一个镜像。 自己的想法觉得yilia自己改起来还是比较麻烦吧，自己也是刚接触前端，不敢大修大改。接下来可能会在多尝试几个比较常用的主题比如NexT，看看效果之后，再决定。]]></content>
+      <content type="text"><![CDATA[基本上都是失败了，主要是添加整个的yilia主题经过作者的一次修改以后，结构和之前有些不同，参考之前的文章，功能并不能很好的实现。而我之前并没有系统的学过前端，所以不敢瞎弄，可能等接下来的一段时间我了解了hexo的原理并且自己开始尝试做主题之后会将这些功能添加Blog上。 未能成功添加返回顶部按钮解决方案参考网址添加之后，返回顶部按钮可以显示，但是单击之后并无响应，而且点击”所有文章”后，出现的抽屉滑块中也会出现返回顶部按钮。原因是 yilia中source文件与source-src文件的关系不清晰。具体的就是totop.js的添加目录，以及after_footer.ejs中对totop.js的引用。 未能成功添加目录解决方案参考网址目录的结构和预想的并不一样，打算的是 类似于 Next主题一样，在点开文章后，会出现 文章目录与站点概览 未能成功被百度收录解决方案参考网址主要github屏蔽了百度爬虫，如果需要解决这个问题的话可能需要弄一个镜像。 自己的想法觉得yilia自己改起来还是比较麻烦吧，自己也是刚接触前端，不敢大修大改。接下来可能会在多尝试几个比较常用的主题比如NexT，看看效果之后，再决定。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[云田·安眠曲（清晨）]]></title>
       <url>%2F2016%2F11%2F15%2F%E4%BA%91%E7%94%B0%C2%B7%E5%AE%89%E7%9C%A0%E6%9B%B2%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[睡吧夜，还有星星]]></content>
+      <content type="text"><![CDATA[睡吧夜，还有星星 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[云田·安眠曲（深夜）]]></title>
       <url>%2F2016%2F11%2F15%2F%E4%BA%91%E7%94%B0%C2%B7%E5%AE%89%E7%9C%A0%E6%9B%B2%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[晚安了灯，还有故事]]></content>
+      <content type="text"><![CDATA[晚安了灯，还有故事 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[云田·桥]]></title>
       <url>%2F2016%2F11%2F14%2F%E4%BA%91%E7%94%B0%C2%B7%E6%A1%A5%2F</url>
-      <content type="text"><![CDATA[冬日的斜阳桥北的影子桥南的我]]></content>
+      <content type="text"><![CDATA[冬日的斜阳桥北的影子桥南的我 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[大河·浮世]]></title>
       <url>%2F2016%2F11%2F13%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%B5%AE%E4%B8%96%2F</url>
-      <content type="text"><![CDATA[无论河面多么平静 抑或 多么汹涌不变的 永远是 那河底里的暗与河顶上的光]]></content>
+      <content type="text"><![CDATA[无论河面多么平静 抑或 多么汹涌不变的 永远是 那河底里的暗与河顶上的光 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[大河·浮生]]></title>
       <url>%2F2016%2F11%2F13%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%B5%AE%E7%94%9F%2F</url>
-      <content type="text"><![CDATA[人的一生像泡沫 晶莹 绚烂像浪花 跳跃 沸腾像波涛 摇曳 翻滚可他们 终究是浮在这大河上被推着来 被推着走]]></content>
+      <content type="text"><![CDATA[人的一生像泡沫 晶莹 绚烂像浪花 跳跃 沸腾像波涛 摇曳 翻滚可他们 终究是浮在这大河上被推着来 被推着走 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[云田·热气球]]></title>
       <url>%2F2016%2F11%2F13%2F%E4%BA%91%E7%94%B0%C2%B7%E7%83%AD%E6%B0%94%E7%90%83%2F</url>
-      <content type="text"><![CDATA[年幼时，想乘上热气球，摸一摸云彩年轻时，想乘上热气球，谈一谈梦想中年时，想乘上热气球，品一品风景年老了，就坐在院里，晒着太阳，看着满天的热气球]]></content>
+      <content type="text"><![CDATA[年幼时，想乘上热气球，摸一摸云彩年轻时，想乘上热气球，谈一谈梦想中年时，想乘上热气球，品一品风景年老了，就坐在院里，晒着太阳，看着满天的热气球 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[云田·凡星]]></title>
       <url>%2F2016%2F11%2F07%2F%E4%BA%91%E7%94%B0%C2%B7%E5%87%A1%E6%98%9F%2F</url>
-      <content type="text"><![CDATA[我住在云上可我喜欢地上的星星他们，会闪烁，会熄灭 记事前些天回来时，客机从一座座城上空飞过，看着地上的灯火，有感而发]]></content>
+      <content type="text"><![CDATA[我住在云上可我喜欢地上的星星他们，会闪烁，会熄灭#### 记事前些天回来时，客机从一座座城上空飞过，看着地上的灯火，有感而发声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[云田·云之南]]></title>
       <url>%2F2016%2F11%2F07%2F%E4%BA%91%E7%94%B0%C2%B7%E4%BA%91%E4%B9%8B%E5%8D%97%2F</url>
-      <content type="text"><![CDATA[记得那年我还年幼你们还年轻 记事今，忽然听到一首年少时喜欢的歌，于是就这么听了一个深夜又想起，前些天在家时，母亲翻到一张她和父亲带着我还有友人出游时拍的合照，她视若珍宝。于是，便有了写云田集的想法，多关于生活的二三两事]]></content>
+      <content type="text"><![CDATA[记得那年我还年幼你们还年轻 记事今，忽然听到一首年少时喜欢的歌，于是就这么听了一个深夜又想起，前些天在家时，母亲翻到一张她和父亲带着我还有友人出游时拍的合照，她视若珍宝。于是，便有了写云田集的想法，多关于生活的二三两事 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[野海·无尘]]></title>
       <url>%2F2016%2F11%2F03%2F%E9%87%8E%E6%B5%B7%C2%B7%E6%97%A0%E5%B0%98%2F</url>
-      <content type="text"><![CDATA[谁也无法停在这野海上这野海也没法挽留谁]]></content>
+      <content type="text"><![CDATA[谁也无法停在这野海上这野海也没法挽留谁 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[野海·所向]]></title>
       <url>%2F2016%2F11%2F03%2F%E9%87%8E%E6%B5%B7%C2%B7%E6%89%80%E5%90%91%2F</url>
-      <content type="text"><![CDATA[野海永不靠岸要将巨浪拍向苍穹和深渊 记事写在第一次进入社会，之后感觉太过安逸，遂辞，关于自身思考了不少，多为自我剖析，集为野海]]></content>
+      <content type="text"><![CDATA[野海永不靠岸他要将巨浪拍向苍穹和深渊#### 记事写在第一次进入社会，之后感觉太过安逸，遂辞，关于自身思考了不少，多为自我剖析，集为野海声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[第一个python练手小程序:二分实现n次方运算]]></title>
       <url>%2F2016%2F11%2F03%2F%E7%AC%AC%E4%B8%80%E4%B8%AApython%E7%BB%83%E6%89%8B%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BA%8C%E5%88%86%E5%AE%9E%E7%8E%B0n%E6%AC%A1%E6%96%B9%E8%BF%90%E7%AE%97%2F</url>
-      <content type="text"><![CDATA[代码主要就是使用二分来对多次方运行进行简化，复杂度从n简化到log(n)，比较基本的代码，主要是用来练手的，对一些情况就未加判断也没有添加异常处理。1234567891011121314def power(x,n): ans = 1 lst=[] while n&gt;0: lst.append(n%2) n=n//2 for i in lst[::-1]: if i == 1 : ans=ans*ans*x else : ans=ans*ans return ans print(power(3,100))]]></content>
+      <content type="text"><![CDATA[代码主要就是使用二分来对多次方运行进行简化，复杂度从n简化到log(n)，比较基本的代码，主要是用来练手的，对一些情况就未加判断也没有添加异常处理。1234567891011121314def power(x,n): ans = 1 lst=[] while n&gt;0: lst.append(n%2) n=n//2 for i in lst[::-1]: if i == 1 : ans=ans*ans*x else : ans=ans*ans return ans print(power(3,100)) 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -264,56 +271,56 @@
     <entry>
       <title><![CDATA[大河·纤夫]]></title>
       <url>%2F2016%2F10%2F28%2F%E5%A4%A7%E6%B2%B3%C2%B7%E7%BA%A4%E5%A4%AB%2F</url>
-      <content type="text"><![CDATA[下雨了我死命拽着纤绳她得留下 记事写在外婆手术前，心绪不宁]]></content>
+      <content type="text"><![CDATA[下雨了我死命拽着纤绳她得留下 记事写在外婆手术前，心绪不宁 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[大河·泊船]]></title>
       <url>%2F2016%2F10%2F28%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%B3%8A%E8%88%B9%2F</url>
-      <content type="text"><![CDATA[船上的人儿呐愿你们啊平缓地靠岸平缓地驶离]]></content>
+      <content type="text"><![CDATA[船上的人儿呐愿你们啊平缓地靠岸平缓地驶离 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[大河·初现]]></title>
       <url>%2F2016%2F10%2F28%2F%E5%A4%A7%E6%B2%B3%C2%B7%E5%88%9D%E7%8E%B0%2F</url>
-      <content type="text"><![CDATA[生命是一条大河她汹涌而来，奔腾而去总是让人猝不及防，泪流满面 记事这两个月，发生了很多事，多关于生命其一侄女出生，其二外婆查出重病其三外甥女出生，其四舅舅查出重病于是想写一些文，来舒缓自己的情绪，集为大河]]></content>
+      <content type="text"><![CDATA[生命是一条大河她汹涌而来，奔腾而去总是让人猝不及防，泪流满面 记事这两个月，发生了很多事，多关于生命其一侄女出生，其二外婆查出重病其三外甥女出生，其四舅舅查出重病于是想写一些文，来舒缓自己的情绪，集为大河 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[Blog功能计划]]></title>
       <url>%2F2016%2F10%2F27%2FBlog%E5%8A%9F%E8%83%BD%E8%AE%A1%E5%88%92%2F</url>
-      <content type="text"><![CDATA[内容 自己写的文章 最新的科技讯息 看过的书的书评 对一些音乐的评价 功能 添加评论多说(因稳定问题，可能搁置) 添加背景音乐 添加访问统计 界面设计 右侧可以在浏览文章时出文章目录]]></content>
+      <content type="text"><![CDATA[内容 自己写的文章 最新的科技讯息 看过的书的书评 对一些音乐的评价 功能 添加评论多说(因稳定问题，可能搁置) 添加背景音乐 添加访问统计 界面设计 右侧可以在浏览文章时出文章目录 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[Blog版本]]></title>
       <url>%2F2016%2F10%2F27%2FBlog%E7%89%88%E6%9C%AC%2F</url>
-      <content type="text"><![CDATA[当前版本 1.0.8 版本计划 1.0.8: foot位置处添加版权说明 1.0.7: 提交百度 1.0.6: 与自己的域名进行绑定，并设置解析 1.0.5: 添加站点的访问统计以及文章的浏览量 1.0.4: 添加搜索服务，支持站内博客搜素服务 1.0.3: 头像设置为圆形，可旋转 1.0.2: 背景设置为动态折线成圆 1.0.1: 添加标签云、categories、关于，并显示标签，分类 1.0.0: 更换主题，使用hexo的NexT主题 0.0.4: 提交google，百度 搜索 0.0.3: 博客添加置顶功能 0.0.3: 添加评论功能； 0.0.2.2: 支持插入图片 0.0.2.1: 支持背景音乐 0.0.2.0: 能够正常发布文字 0.0.1:参照hexo的yilia主题，进行blog的搭建]]></content>
+      <content type="text"><![CDATA[当前版本 1.0.8 版本计划 1.0.8: foot位置处添加版权说明 1.0.7: 提交百度 1.0.6: 与自己的域名进行绑定，并设置解析 1.0.5: 添加站点的访问统计以及文章的浏览量 1.0.4: 添加搜索服务，支持站内博客搜素服务 1.0.3: 头像设置为圆形，可旋转 1.0.2: 背景设置为动态折线成圆 1.0.1: 添加标签云、categories、关于，并显示标签，分类 1.0.0: 更换主题，使用hexo的NexT主题 0.0.4: 提交google，百度 搜索 0.0.3: 博客添加置顶功能 0.0.3: 添加评论功能； 0.0.2.2: 支持插入图片 0.0.2.1: 支持背景音乐 0.0.2.0: 能够正常发布文字 0.0.1:参照hexo的yilia主题，进行blog的搭建 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[手机与pc端的背景音乐测试]]></title>
       <url>%2F2016%2F10%2F22%2F%E6%89%8B%E6%9C%BA%E4%B8%8Epc%E7%AB%AF%E7%9A%84%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E6%B5%8B%E8%AF%95%2F</url>
-      <content type="text"><![CDATA[问题添加了背景音乐音乐功能，在PC上可以正常播放，在手机上网页访问正常正常，音乐播放不了 原因手机端的浏览器需要一个触发事件才能播放 解决设置外链播放器长和宽，显示出来，用户可以自己选择播放 优化参照素锦的设计风格，将播放器进行简化（待）]]></content>
+      <content type="text"><![CDATA[问题添加了背景音乐音乐功能，在PC上可以正常播放，在手机上网页访问正常正常，音乐播放不了 原因手机端的浏览器需要一个触发事件才能播放 解决设置外链播放器长和宽，显示出来，用户可以自己选择播放 优化参照素锦的设计风格，将播放器进行简化（待） 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[步苏]]></title>
       <url>%2F2016%2F10%2F20%2F%E6%AD%A5%E8%8B%8F%2F</url>
-      <content type="text"><![CDATA[浓与淡&#160; &#160; &#160; &#160;要离开了，想散散心，去绍兴或莫干山都行。快出发时，一想，得去苏州，便去了。&#160; &#160; &#160; &#160;到时，夜已深，秋意不浓，凉意倒有些。去了旅社，无事。 飘&#160; &#160; &#160; &#160;睡熟了，快中午才起的，什么也没收拾，也没什么好收拾，这么就去了拙政园。品了很多景，也赏了很多人，最念的是独留的一朵莲。她开了，我见了，很美。&#160; &#160; &#160; &#160;漫步时满园桂花香，在一个小丘的凉亭处最浓时，拨了她的电话，接了。跟她话这周遭的景和刚想出的两个句子，我寻到的她也算见着了。&#160; &#160; &#160; &#160;之后游了狮子园，只是桂花香渐渐淡了。&#160; &#160; &#160; &#160;在天色快暗时寻着了虎丘。洗剑池，云岩寺塔，见了。下山，走的西边，有竹林，有茶园，有凉亭，有流水，无人。 我们&#160; &#160; &#160; &#160;晚上回旅社，和其他人说上了话。&#160; &#160; &#160; &#160;一人是在这儿住下了，终日就在这儿荡着，没问他家在哪儿，也没问他准备做什么。闲来无事时，在想，他念着的许是姑娘，许是江南，也许都是，也许都不是，谁晓得呢，便是他自己也迷蒙着的吧。&#160; &#160; &#160; &#160;一人是刚从西北回来，据他说，是本地人，跟他多聊了会儿，他爱现代建筑，而我喜古瓦屋舍，话题往往被他偷去，又被我窃回。&#160; &#160; &#160; &#160;还有一人，不识。 从&#160; &#160; &#160; &#160;最后一天，早起，出来。到了留园，今天的桂花，没有昨天的香。去到那个本地人推荐的地儿呆半天，跑了。&#160; &#160; &#160; &#160;等车时，和一人聊的很投缘，他是来这儿见朋友的，得回去上班，走时交换了通讯方式。现在想想和他的联系还是临别时互道的平安。 终&#160; &#160; &#160; &#160;回来跟友人闲聊时说，不会再去了，问：是不够好吗，回道：是我好了。 江南&#160; &#160; &#160; &#160;这便是江南，过便过了，只能见着一次。所以才缺憾着。所以才完整着。]]></content>
+      <content type="text"><![CDATA[苏州，没有我的故事## 浓与淡&#160; &#160; &#160; &#160;要离开了，想散散心，去绍兴或莫干山都行。快出发时，一想，得去苏州，便去了。&#160; &#160; &#160; &#160;到时，夜已深，秋意不浓，凉意倒有些。去了旅社，无事。## 飘&#160; &#160; &#160; &#160;睡熟了，快中午才起的，什么也没收拾，也没什么好收拾，这么就去了拙政园。品了很多景，也赏了很多人，最念的是独留的一朵莲。她开了，我见了，很美。&#160; &#160; &#160; &#160;漫步时满园桂花香，在一个小丘的凉亭处最浓时，拨了她的电话，接了。跟她话这周遭的景和刚想出的两个句子，我寻到的她也算见着了。&#160; &#160; &#160; &#160;之后游了狮子园，只是桂花香渐渐淡了。&#160; &#160; &#160; &#160;在天色快暗时寻着了虎丘。洗剑池，云岩寺塔，见了。下山，走的西边，有竹林，有茶园，有凉亭，有流水，无人。## 我们&#160; &#160; &#160; &#160;晚上回旅社，和其他人说上了话。&#160; &#160; &#160; &#160;一人是在这儿住下了，终日就在这儿荡着，没问他家在哪儿，也没问他准备做什么。闲来无事时，在想，他念着的许是姑娘，许是江南，也许都是，也许都不是，谁晓得呢，便是他自己也迷蒙着的吧。&#160; &#160; &#160; &#160;一人是刚从西北回来，据他说，是本地人，跟他多聊了会儿，他爱现代建筑，而我喜古瓦屋舍，话题往往被他偷去，又被我窃回。&#160; &#160; &#160; &#160;还有一人，不识。## 从&#160; &#160; &#160; &#160;最后一天，早起，出来。到了留园，今天的桂花，没有昨天的香。去到那个本地人推荐的地儿呆半天，跑了。&#160; &#160; &#160; &#160;等车时，和一人聊的很投缘，他是来这儿见朋友的，得回去上班，走时交换了通讯方式。现在想想和他的联系还是临别时互道的平安。## 终&#160; &#160; &#160; &#160;回来跟友人闲聊时说，不会再去了，问：是不够好吗，回道：是我好了。## 江南&#160; &#160; &#160; &#160;这便是江南，过便过了，只能见着一次。所以才缺憾着。所以才完整着。声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[开站啦！！]]></title>
       <url>%2F2016%2F10%2F20%2F%E5%BC%80%E7%AB%99%E5%95%A6%EF%BC%81%EF%BC%81%2F</url>
-      <content type="text"><![CDATA[这是我第一次建自己的个人Blog，自己建博客虽然是麻烦了一点，但是感觉全部都是自己弄的，会比较有意思，没办法就是喜欢折腾。 个人介绍 大四毕业狗一枚，不要问我考不考研，头都疼。虽然没钱，但是还是浪~头像是我老弟，现在长残了，劝各位程序媛姐姐，不要打他主意，据说他哥长的还可以，求收养。 学习方向 之前学过C#，Android，数据库。做过图像处理，音频分析，嵌入式开发等项目。现在暂时可能有一段时间会研究研究前端，毕竟这个站，也是参考大触们，东拼西凑出了的。等我弄明白了，还要添加一些功能，譬如 打赏啊(这是最关键的)。抽时间看看数据挖掘，爬虫之类的，爬一些比较好玩的数据来分析。 博客内容 主要会写一些技术分享，自己的学习计划，自己的项目想法（感兴趣可以在github上面一起完成），当然还有一些生活上面的对电影，音乐以及旅行的感悟。]]></content>
+      <content type="text"><![CDATA[这是我第一次建自己的个人Blog，自己建博客虽然是麻烦了一点，但是感觉全部都是自己弄的，会比较有意思，没办法就是喜欢折腾。 个人介绍 大四毕业狗一枚，不要问我考不考研，头都疼。虽然没钱，但是还是浪~头像是我老弟，现在长残了，劝各位程序媛姐姐，不要打他主意，据说他哥长的还可以，求收养。 学习方向 之前学过C#，Android，数据库。做过图像处理，音频分析，嵌入式开发等项目。现在暂时可能有一段时间会研究研究前端，毕竟这个站，也是参考大触们，东拼西凑出了的。等我弄明白了，还要添加一些功能，譬如 打赏啊(这是最关键的)。抽时间看看数据挖掘，爬虫之类的，爬一些比较好玩的数据来分析。 博客内容 主要会写一些技术分享，自己的学习计划，自己的项目想法（感兴趣可以在github上面一起完成），当然还有一些生活上面的对电影，音乐以及旅行的感悟。 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
