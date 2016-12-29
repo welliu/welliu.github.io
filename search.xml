@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Android Studio学习笔记(一)]]></title>
+      <url>%2F2016%2F12%2F29%2FAndroid-Studio%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80%2F</url>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;主要的参考书籍为是老毕写的《Android Studio实用指南》，纸版名为《精通AndroidStudio》清华大学出版，很详细的工具书。具体内容书里面写的很清楚，我主要是想把一些自己感觉比较重要的内容和一些结构的东西记到这个学习笔记里，可能显得比较零散。&#160; &#160; &#160; &#160; Keywords: 图标说明, Module, Project, 目录结构 图标工具栏图标 状态栏图标 监控工具窗口 Android Monitor ModuleModule是一个可以单独的运行和调试的application或公共库,它相当于Eclipse当中的Project。一些公共的代码会放到module当中,当APP需要添加一些依赖的库或者需要依赖一些公共的项目时可以导入module。每个module中都有自己的build.gradle文件用来配置模块的构建任务，比如配置SDK版本、构建工具版本、应用程序版本、打包参数、模块的依赖等等。 ProjectProject可以理解为一个完整的APP项目,它由application module和一些依赖的module组成, 相当于Eclipse当中的workspace。一个Project中有多个module。Project中也有一个build.gradle文件用来指定构建的项目和任务,当你导入或新建一个Module时,build.gradle会自动更新。 Module VS Project Module相当于Eclipse当中的Project. Project相当于Eclipse当中的workspace. 一个Project中可以包含多个Module. Module中的build.grade用于配置模块的构建任务.Project中的build.grade用于定构建的项目和任务. 目录结构结构图 结构说明 声明: 本文转载前需与作者联系并标明出处。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Blog添加转载声明]]></title>
       <url>%2F2016%2F12%2F29%2FBlog%E6%B7%BB%E5%8A%A0%E8%BD%AC%E8%BD%BD%E5%A3%B0%E6%98%8E%2F</url>
       <content type="text"><![CDATA[&#160; &#160; &#160; &#160;看到一个Next主题的Blog,里面基本上每一篇文章都有一个声明，出来的效果也是不错的。虽然我之前也在footer添加了版权说明，但觉得在文章结尾加声明更加合理。 具体的做法就是修改 scaffolds\post.md123456789101112---title: Blog添加转载声明date: 1482981437000categories:tags:---&lt;!-- more --&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;声明: 本文转载前需与作者联系并标明出处。&lt;/blockquote&gt;这样每次新建一篇文章的时候，会将 Read-More 与 声明 自动添加上去，具体的效果可以看以下的声明。(p.s. 不多说了，我还要把之前的文章都加上声明，累觉不爱。) 声明: 本文转载前需与作者联系并标明出处。]]></content>
