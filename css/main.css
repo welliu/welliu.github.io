@@ -1785,7 +1785,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #32ffaf;
+  background: #df5e40;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2688,12 +2688,13 @@ hr {
 .posts-expand {
   padding-top: 0;
 }
-.posts-expand .post-title,
+.posts-expand .post-title {
+  text-align: center;
+}
 .posts-expand .post-meta {
   text-align: left;
 }
 @media (max-width: 767px) {
-  .posts-expand .post-title,
   .posts-expand .post-meta {
     text-align: center;
   }
@@ -2733,7 +2734,7 @@ hr {
   margin: 0;
 }
 .posts-expand .post-tags {
-  text-align: left;
+  text-align: center;
 }
 .posts-expand .post-tags a {
   padding: 1px 5px;
@@ -2748,7 +2749,7 @@ hr {
 }
 .post-more-link {
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 .post-more-link a {
   padding: 0;

@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[Blog居中调整(基于Next主题)]]></title>
+      <url>%2F2016%2F12%2F29%2FBlog%E5%B1%85%E4%B8%AD%E8%B0%83%E6%95%B4-%E5%9F%BA%E4%BA%8ENext%E4%B8%BB%E9%A2%98%2F</url>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;今天在github上Next主题的issues碰巧看到一篇关于sidebar居中的讨论，而之前就对于主页里面 标题 和 read more 靠左感觉不舒服,想改成居中的模式。于是就在sublime里面对Next主题搜索 text-align: left， Searching 276 files for “text-align: left”，在276个文件里面找到了相关的设置 是在 themes\next\source\css_schemes\Mist_posts-expanded.styl 这个文件里面进行相关的修改。（注意我使用的是Mist场景，场景不同的小伙伴可以尝试将路径里的Mist改成自己使用的场景） 标题居中1.post-title, 改成123.post-title&#123; text-align: center;&#125; Read-More居中将.post-more-link里面的 text-align: left; 改成 text-align: center; 标签居中将.post-tags里面的 text-align: left; 改成 text-align: center;]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Blog隐藏成就系统]]></title>
+      <url>%2F2016%2F12%2F29%2FBlog%E9%9A%90%E8%97%8F%E6%88%90%E5%B0%B1%E7%B3%BB%E7%BB%9F%2F</url>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;上次在修改Header标签的时候在themes\next\languages\zh-Hans.yml文件里发现了一个神奇的东西，cheers成就系统，里面有um, ok, nice, good, great, excellent.于是我熊熊的八卦之火便一发不可收拾，直接改成了：1234567cheers: um: 非洲大酋长！ ok: 非洲部落首领！ nice: 非洲人！ good: 偷渡者！ great: 欧洲人！ excellent: 欧皇血统！&#160; &#160; &#160; &#160;看着还像这么回事！之后又在 themes\next\layout\archive.swig 里面找到了达成成就的条件(代码不完整)：123456posts_length &gt; 210 cheers = &apos;excellent&apos; elif posts_length &gt; 130 cheers = &apos;great&apos; elif posts_length &gt; 80 cheers = &apos;good&apos; elif posts_length &gt; 50 cheers = &apos;nice&apos; elif posts_length &gt; 30 cheers = &apos;ok&apos; else cheers = &apos;um&apos; 210篇才能翻身农奴把歌唱，任重而道远，加油吧！骚年!]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[修改Blog上面Header标签]]></title>
       <url>%2F2016%2F12%2F24%2F%E4%BF%AE%E6%94%B9Blog%E4%B8%8A%E9%9D%A2Header%E6%A0%87%E7%AD%BE%2F</url>
       <content type="text"><![CDATA[&#160; &#160; &#160; &#160;想把header上面的文字改掉，把原来的“关于”改成“简历”，这样清晰一点。之前做过“楽”的功能，于是第一时间想到的就是到header.swig这个文件里面找标签，很遗憾和我想的并不一样。之后想到直接在整个Blog中搜索“关于”，找到对应的文件。因为我用的是sublime，直接ctrl + shift + f 就可以在文件夹里面找了。结果在 \themes\next\languages\zh-Hans.yml 这个文件里面找到了这些文字。如果想修改的话，到这个文件里面直接替换掉相关文字就ok了。(p.s. sublime可以做很多神奇的事情，简直赞)]]></content>
