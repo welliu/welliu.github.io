@@ -87,7 +87,7 @@
 <meta name="description" content="this fire is burning us 这星火燃起你我">
 <meta property="og:type" content="website">
 <meta property="og:title" content="we new">
-<meta property="og:url" content="http://welliu.github.io/tags/frist-Blood/index.html">
+<meta property="og:url" content="http://welliu.github.io/tags/frist-blood/index.html">
 <meta property="og:site_name" content="we new">
 <meta property="og:description" content="this fire is burning us 这星火燃起你我">
 <meta name="twitter:card" content="summary">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://welliu.github.io/tags/frist-Blood/"/>
+  <link rel="canonical" href="http://welliu.github.io/tags/frist-blood/"/>
 
 
 
 
 
-  <title> 标签: frist Blood | we new </title>
+  <title> 标签: frist blood | we new </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -328,7 +328,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        frist Blood
+        frist blood
         <small>标签</small>
       </h2>
     </div>
@@ -341,9 +341,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/11/30/slam占个坑/" itemprop="url">
+            <a class="post-title-link" href="/2016/11/16/第一次使用NexT主题/" itemprop="url">
               
-                <span itemprop="name">slam占个坑</span>
+                <span itemprop="name">第一次使用NexT主题</span>
               
             </a>
         
@@ -351,9 +351,65 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-30T22:39:20+08:00"
-              content="2016-11-30" >
-          11-30
+              datetime="2016-11-16T00:00:24+08:00"
+              content="2016-11-16" >
+          11-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/11/03/第一个python练手小程序-二分实现n次方运算/" itemprop="url">
+              
+                <span itemprop="name">第一个python练手小程序:二分实现n次方运算</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-11-03T17:49:24+08:00"
+              content="2016-11-03" >
+          11-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/10/20/开站啦！！/" itemprop="url">
+              
+                <span itemprop="name">开站啦！！</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-10-20T10:41:24+08:00"
+              content="2016-10-20" >
+          10-20
         </time>
       </div>
 
@@ -843,60 +899,6 @@
             /* End Set ACL */
             newcounter.set("title", title);
             newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-<!-- �������� -->
-<script type="text/javascript" src="/js/src/particle.js"></script>
-</body>
-</html>
-, url);
             newcounter.set("time", 1);
             newcounter.save(null, {
               success: function(newcounter) {
