@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[2017对自己的期待]]></title>
+      <url>%2F2017%2F01%2F01%2F2017%E6%96%B0%E5%B9%B4%E6%84%BF%E6%9C%9B%2F</url>
+      <content type="text"><![CDATA[吞风吻雨葬落日欺山赶海践雪径天阔阔 雪漫漫沙滚滚 水皱皱拈花把酒 放啸浪荡贪欢一晌 儿女情长 坚韧的自己，宽阔的胸怀]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[【转】Blog摘要配图]]></title>
       <url>%2F2016%2F12%2F30%2F%E3%80%90%E8%BD%AC%E3%80%91Blog%E6%91%98%E8%A6%81%E9%85%8D%E5%9B%BE%2F</url>
       <content type="text"><![CDATA[主要实现的就是在标题和摘要中间，插进一张Logo图片，而当点击进入后，就不会再显示这个logo图片了。原文地址：Hexo主题的数据封装，样式渲染和扩展实例。 css样式 hexo/themes/next/source/css/: 是next主题的样式文件，决定主题的外观。 hexo/themes/next/source/css/main.styl：汇总css文件夹中所有的样式。 hexo/themes/next/source/css/ _custom/custom.styl：是空的，专门让开发者扩展。 需要在custom.styl里为图片设计一个专用容器。1234567891011121314151617//图片外部的容器方框 .out-img-topic &#123; display: block; max-height:300px; margin-bottom: 24px; overflow: hidden;&#125;//图片img.img-topic &#123; display: block ; margin-left: .7em; margin-right: .7em; padding: 0; float: right; clear: right;&#125; 这里图片外部的容器用来限制图片显示的大小，最大的高度为300px，overflow: hidden;让多余部分隐藏。margin-bottom: 24px;确保图片和文章摘要部分空出一定空间。 渲染修改 /themes/next/layout/ _macro/post.swig ，在 if is_index 与 if post.description and theme.excerpt_description 之间添加以下代码12345&#123;% if post.images %&#125; &lt;div class=&quot;out-img-topic&quot;&gt; &lt;img src=&#123;&#123; post.images &#125;&#125; class=&quot;img-topic&quot;&gt; &lt;/div&gt;&#123;% endif %&#125; 模板在 /scaffolds/post.md ，加一个images字段，那么在创建新的文章时，填的图片地址就会一直作为文章的一个属性被传递。12345title: &#123;&#123; title &#125;&#125;date: &#123;&#123; date &#125;&#125;categories:tags:images: &quot;/images/摘要配图/&quot; 我在images下新建一个摘要配图的文件夹专门用来放入这些图片。如果不想在摘要加入图片，images里面不填写路径就可以了。(p.s. 在写这篇的时候，用codeblock代码块崩了，提示Template render error，之后改成```来引用代码ok了~~) 声明: 本文转载前需与作者联系并标明出处。]]></content>
