@@ -3,9 +3,16 @@
   
     
     <entry>
+      <title><![CDATA[深入理解Android(一)]]></title>
+      <url>%2F2017%2F01%2F03%2F%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Android-%E4%B8%80%2F</url>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;虽然开发过几个Android的项目，但还是对Android的机制不是很熟悉，所以趁这个假期的时候查缺补漏，阅读 邓凡平老师 的《深入理解Android》来强化Android基础。这篇Blog主要是读书笔记，对一些关键地方做记录，方便自己复习巩固。深入理解Android的CSDN专栏。&#160; &#160; &#160; &#160; Keywords: Android系统架构 Android系统架构整体架构Android系统大体可分为四层，从下往上依次是： Linux内核层，关于底层硬件驱动等。 Libraries层，这一层提供动态库（也叫共享库）、Android运行时库、Dalvik虚拟机等。从编程语言上来说，这一层大部分都是用C或C++写的，所以也可以简单地把它看成是Native层。 Libraries层之上是Framework层，这一层大部分用Java语言编写。它是Android平台上Java世界的基石。 Framework层之上就是Applications层了，和用户直接交互的就是这些应用程序，它们都是用Java开发的。 Java与Native的交互 Java虽具有和平台无关的特性，但Java和具体平台之间的隔离却是由JNI层来做到的。Java是通过JNI层调用Linux OS中的系统调用来完成对应的功能的。例如创建一个文件、创建一个Socket等。 除了Java世界外，还有一个核心的Native世界，它为整个系统高效和平稳的运行提供了强有力的支持。一般而言，Java世界经由JNI层通过IPC方式和Native世界交互。而Android平台上最为神秘的IPC方法就是Binder了。在第六章将详细介绍Binder。除此之外，Socket也是常用的IPC方式。这些内容在后面的代码分析中都会见到。 各知识点所处层次 JNIJNI，是Java Native Interface的缩写，中文为Java本地调用。通俗地说，JNI是一种技术，通过这种技术可以做到以下两点： Java程序中的函数可以调用Native语言写的函数，Native一般指的是C/C++编写的函数。 Native程序中的函数可以调用Java层的函数，也就是在C/C++程序中可以调用Java的函数。 声明: 本文转载前需与作者联系并标明出处。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[链接整理]]></title>
       <url>%2F2017%2F01%2F03%2F%E9%93%BE%E6%8E%A5%E6%95%B4%E7%90%86%2F</url>
-      <content type="text"><![CDATA[大学一直有这个习惯，看到什么不错的网站就收藏起来，虽然换了几个浏览器，但每次也会导入，所以到现在也是有不少了，搞得现在我也不知道关于是什么了，所以趁没事儿不多就整理一波。 博客搭建HEXO搭建个人博客如何利用github搭建一个个人网站如何利用github打造博客专属域名玩转hexo博客之nextHexo搭建Github静态博客hexo之next主题优化整理Hexo-NexT搭建个人博客（一）Never_yu’s BlogHexo-NexT搭建个人博客（二）Never_yu’s BlogHexo-NexT搭建个人博客（三）Never_yu’s BlogHexo-NexT搭建个人博客（四）Never_yu’s Blog使用Hexo基于GitHub Pages搭建个人博客 Ehlxr’s Blog 功能完善Hexo插入背景音乐的正确姿势在搭建的Hexo博客系统中添加音乐Hexo，添加返回顶部按钮hexo主题中添加相册功能为Hexo博客添加目录如何使用百度站长工具CNAME进行认证？万网版 提交Blog解决 Github Pages 禁止百度爬虫的方法2–从gitcafe迁移到coding.net解决 Github Pages 禁止百度爬虫的方法 其他人的Blogiissnanwanghaovioseylogin926Anderson Lu 声明: 本文转载前需与作者联系并标明出处。]]></content>
+      <content type="text"><![CDATA[大学一直有这个习惯，看到什么不错的网站就收藏起来，虽然换了几个浏览器，但每次也会导入，所以到现在也是有不少了，搞得现在我也不知道关于是什么了，所以趁没事儿不多就整理一波。 博客搭建HEXO搭建个人博客如何利用github搭建一个个人网站如何利用github打造博客专属域名玩转hexo博客之nextHexo搭建Github静态博客hexo之next主题优化整理Hexo-NexT搭建个人博客（一）Never_yu’s BlogHexo-NexT搭建个人博客（二）Never_yu’s BlogHexo-NexT搭建个人博客（三）Never_yu’s BlogHexo-NexT搭建个人博客（四）Never_yu’s Blog使用Hexo基于GitHub Pages搭建个人博客 Ehlxr’s Blog 功能完善Hexo插入背景音乐的正确姿势在搭建的Hexo博客系统中添加音乐Hexo，添加返回顶部按钮hexo主题中添加相册功能为Hexo博客添加目录如何使用百度站长工具CNAME进行认证？万网版 提交Blog解决 Github Pages 禁止百度爬虫的方法2–从gitcafe迁移到coding.net解决 Github Pages 禁止百度爬虫的方法 其他人的BlogiissnanwanghaoNever_yu诗与远方玮|Weivioseylogin926Anderson Lu 学习开源世界devstore深度开源 技术C++慕课网Android Studio中文社区UI设计w3cschool菜鸟教程人人都是PM 业界讯息InfoQ36氪 安全漏洞国家信息安全漏洞共享平台91Ri乌云 已散 有的网站百度云资源搜索在线简历充满想象力的 JavaScript 物理和重力实验 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -26,7 +33,7 @@
     <entry>
       <title><![CDATA[Android Studio学习笔记(一)]]></title>
       <url>%2F2016%2F12%2F29%2FAndroid-Studio%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;主要的参考书籍为是老毕写的《Android Studio实用指南》，纸版名为《精通AndroidStudio》清华大学出版，很详细的工具书。具体内容书里面写的很清楚，我主要是想把一些自己感觉比较重要的内容和一些结构的东西记到这个学习笔记里，可能显得比较零散。&#160; &#160; &#160; &#160; Keywords: 图标说明, Module, Project, 目录结构 图标工具栏图标 状态栏图标 监控工具窗口 Android Monitor ModuleModule是一个可以单独的运行和调试的application或公共库,它相当于Eclipse当中的Project。一些公共的代码会放到module当中,当APP需要添加一些依赖的库或者需要依赖一些公共的项目时可以导入module。每个module中都有自己的build.gradle文件用来配置模块的构建任务，比如配置SDK版本、构建工具版本、应用程序版本、打包参数、模块的依赖等等。 ProjectProject可以理解为一个完整的APP项目,它由application module和一些依赖的module组成, 相当于Eclipse当中的workspace。一个Project中有多个module。Project中也有一个build.gradle文件用来指定构建的项目和任务,当你导入或新建一个Module时,build.gradle会自动更新。 Module VS Project Module相当于Eclipse当中的Project. Project相当于Eclipse当中的workspace. 一个Project中可以包含多个Module. Module中的build.grade用于配置模块的构建任务.Project中的build.grade用于定构建的项目和任务. 目录结构结构图 结构说明 声明: 本文转载前需与作者联系并标明出处。]]></content>
+      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;主要的参考书籍为是老毕写的《Android Studio实用指南》，纸版名为《精通AndroidStudio》清华大学出版，很详细的工具书。具体内容书里面写的很清楚，我主要是想把一些自己感觉比较重要的内容和一些结构的东西记到这个学习笔记里，可能显得比较零散。&#160; &#160; &#160; &#160; Keywords: 图标说明, Module, Project, 目录结构 图标工具栏图标 状态栏图标 监控工具窗口 Android Monitor ModuleModule是一个可以单独的运行和调试的application或公共库,它相当于Eclipse当中的Project。一些公共的代码会放到module当中,当APP需要添加一些依赖的库或者需要依赖一些公共的项目时可以导入module。每个module中都有自己的build.gradle文件用来配置模块的构建任务，比如配置SDK版本、构建工具版本、应用程序版本、打包参数、模块的依赖等等。 ProjectProject可以理解为一个完整的APP项目,它由application module和一些依赖的module组成, 相当于Eclipse当中的workspace。一个Project中有多个module。Project中也有一个build.gradle文件用来指定构建的项目和任务,当你导入或新建一个Module时,build.gradle会自动更新。 Module VS Project Module相当于Eclipse当中的Project. Project相当于Eclipse当中的workspace. 一个Project中可以包含多个Module. Module中的build.grade用于配置模块的构建任务.Project中的build.grade用于定构建的项目和任务. 目录结构结构图 结构说明 资源目录 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
