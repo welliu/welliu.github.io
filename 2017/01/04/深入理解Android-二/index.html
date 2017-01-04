@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="音乐," />
+  <meta name="keywords" content="Android,学习," />
 
 
 
@@ -84,16 +84,30 @@
 
 
 
-<meta name="description" content="Wake Me Up When September Ends，Green Day用这首歌把我唤醒">
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;(原文地址) JNI，是Java Native Interface的缩写，中文为Java本地调用。通俗地说，JNI是一种技术，通过这种技术可以做到以下两点：
+
+Java程序中的函数可以调用Native语言写的函数，Native一般指的是C/C++编写的函数。
+Native程序中的函数可以调用Java层的函数，也就是在C/C++程序中可以调用Ja">
 <meta property="og:type" content="article">
-<meta property="og:title" content="九月结束时，请把我唤醒">
-<meta property="og:url" content="http://welliu.github.io/2016/11/20/九月结束时，请把我唤醒/index.html">
+<meta property="og:title" content="深入理解Android - JNI">
+<meta property="og:url" content="http://welliu.github.io/2017/01/04/深入理解Android-二/index.html">
 <meta property="og:site_name" content="we new">
-<meta property="og:description" content="Wake Me Up When September Ends，Green Day用这首歌把我唤醒">
-<meta property="og:updated_time" content="2016-12-30T15:22:01.610Z">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;(原文地址) JNI，是Java Native Interface的缩写，中文为Java本地调用。通俗地说，JNI是一种技术，通过这种技术可以做到以下两点：
+
+Java程序中的函数可以调用Native语言写的函数，Native一般指的是C/C++编写的函数。
+Native程序中的函数可以调用Java层的函数，也就是在C/C++程序中可以调用Ja">
+<meta property="og:image" content="http://welliu.github.io/images/深入理解Android/JNI.png">
+<meta property="og:image" content="http://welliu.github.io/images/深入理解Android/JNI基本类型.jpg">
+<meta property="og:image" content="http://welliu.github.io/images/深入理解Android/JNI引用类型.jpg">
+<meta property="og:image" content="http://welliu.github.io/images/深入理解Android/JNIEnv的内部结构.png">
+<meta property="og:updated_time" content="2017-01-04T14:02:34.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="九月结束时，请把我唤醒">
-<meta name="twitter:description" content="Wake Me Up When September Ends，Green Day用这首歌把我唤醒">
+<meta name="twitter:title" content="深入理解Android - JNI">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;(原文地址) JNI，是Java Native Interface的缩写，中文为Java本地调用。通俗地说，JNI是一种技术，通过这种技术可以做到以下两点：
+
+Java程序中的函数可以调用Native语言写的函数，Native一般指的是C/C++编写的函数。
+Native程序中的函数可以调用Java层的函数，也就是在C/C++程序中可以调用Ja">
+<meta name="twitter:image" content="http://welliu.github.io/images/深入理解Android/JNI.png">
 
 
 
@@ -121,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://welliu.github.io/2016/11/20/九月结束时，请把我唤醒/"/>
+  <link rel="canonical" href="http://welliu.github.io/2017/01/04/深入理解Android-二/"/>
 
 
 
 
 
-  <title> 九月结束时，请把我唤醒 | we new </title>
+  <title> 深入理解Android - JNI | we new </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -337,7 +351,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://welliu.github.io/2016/11/20/九月结束时，请把我唤醒/">
+  <link itemprop="mainEntityOfPage" href="http://welliu.github.io/2017/01/04/深入理解Android-二/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wel liu">
@@ -361,7 +375,7 @@
             
             
               
-                九月结束时，请把我唤醒
+                深入理解Android - JNI
               
             
           </h1>
@@ -374,8 +388,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-20T21:38:55+08:00">
-                2016-11-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T21:52:09+08:00">
+                2017-01-04
               </time>
             
 
@@ -393,8 +407,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/兴趣/" itemprop="url" rel="index">
-                    <span itemprop="name">兴趣</span>
+                  <a href="/categories/Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Knowledge</span>
                   </a>
                 </span>
 
@@ -412,7 +426,7 @@
 
           
           
-             <span id="/2016/11/20/九月结束时，请把我唤醒/" class="leancloud_visitors" data-flag-title="九月结束时，请把我唤醒">
+             <span id="/2017/01/04/深入理解Android-二/" class="leancloud_visitors" data-flag-title="深入理解Android - JNI">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -437,10 +451,58 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>Wake Me Up When September Ends，Green Day用这首歌把我唤醒</p>
-<a id="more"></a>
-<blockquote class="blockquote-center"><br>Summer has come and passed<br>夏日到来 复又离去<br>The innocent can never last<br>天真岁月岂能永驻<br>wake me up when september ends<br>九月结束时 请唤醒我<br>like my fathers come to pass<br>就像我们的父辈已经远去<br>seven years has gone so fast<br>七年时光匆匆而过<br>wake me up when september ends<br>九月结束时 请唤醒我<br>here comes the rain again<br>此刻雨又再次<br>falling from the stars<br>从星空坠落<br>drenched in my pain again<br>再次浸透我的痛苦<br>becoming who we are<br>成为了现在的我们<br>as my memory rests<br>当我的记忆沉寂<br>but never forgets what I lost<br>却绝不忘记失去的东西<br>wake me up when september ends<br>九月结束时 请唤醒我<br><br>summer has come and passed<br>夏日到来 复又离去<br>the innocent can never last<br>天真岁月岂能永驻<br>wake me up when september ends<br>九月结束时 请唤醒我<br>ring out the bells again<br>我们再次敲响钟声<br>like we did when spring began<br>如在春日之始<br>wake me up when september ends<br>九月结束时 请唤醒我<br>here comes the rain again<br>此刻雨又再次<br>falling from the stars<br>从星空坠落<br>drenched in my pain again<br>再次浸透我的痛苦<br>becoming who we are<br>成为了现在的我们<br>as my memory rests<br>当我的记忆沉寂<br>but never forgets what I lost<br>却绝不忘记失去的东西<br>wake me up when september ends<br>九月结束时 请唤醒我<br><br>Summer has come and passed<br>夏日到来 复又离去<br>The innocent can never last<br>天真岁月岂能永驻<br>wake me up when september ends<br>九月结束时 请唤醒我<br>like my father’s come to pass<br>就像我们的父辈已经远去<br>twenty years has gone so fast<br>二十年时光匆匆而过<br>wake me up when september ends<br>九月结束时 请唤醒我<br>wake me up when september ends<br>九月结束时 请唤醒我<br>wake me up when september ends<br>九月结束时 请唤醒我<br></blockquote>
-
+        <script src="/assets/js/APlayer.min.js"> </script><p>&#160; &#160; &#160; &#160;<a href="http://blog.csdn.net/innost/article/details/47204557" target="_blank" rel="external">(原文地址)</a> JNI，是Java Native Interface的缩写，中文为Java本地调用。通俗地说，JNI是一种技术，通过这种技术可以做到以下两点：</p>
+<ul>
+<li>Java程序中的函数可以调用Native语言写的函数，Native一般指的是C/C++编写的函数。</li>
+<li>Native程序中的函数可以调用Java层的函数，也就是在C/C++程序中可以调用Java的函数。</li>
+</ul>
+<p>&#160; &#160; &#160; &#160;<strong> Keywords:  JNI  </strong><br><a id="more"></a></p>
+<p><img src="/images/深入理解Android/JNI.png" alt=""></p>
+<h2 id="Java层"><a href="#Java层" class="headerlink" title="Java层"></a>Java层</h2><ul>
+<li>加载对应的JNI库；</li>
+<li>声明由关键字native修饰的函数；</li>
+</ul>
+<h2 id="JNI层"><a href="#JNI层" class="headerlink" title="JNI层"></a>JNI层</h2><h3 id="注册JNI函数"><a href="#注册JNI函数" class="headerlink" title="注册JNI函数"></a>注册JNI函数</h3><h4 id="静态方法：根据函数名来找对应的JNI函数"><a href="#静态方法：根据函数名来找对应的JNI函数" class="headerlink" title="静态方法：根据函数名来找对应的JNI函数"></a>静态方法：根据函数名来找对应的JNI函数</h4><p>流程如下: </p>
+<ol>
+<li>先编写Java代码，然后编译生成.class文件。</li>
+<li>使用Java的工具程序javah，如javah–o output packagename.classname ，这样它会生成一个叫output.h的JNI层头文件。其中packagename.classname是Java代码编译后的class文件，而在生成的output.h文件里，声明了对应的JNI层函数，只要实现里面的函数即可。</li>
+</ol>
+<h4 id="动态方法：使用JNINativeMethod结构来保存Java-native函数数和JNI函数的关联关系"><a href="#动态方法：使用JNINativeMethod结构来保存Java-native函数数和JNI函数的关联关系" class="headerlink" title="动态方法：使用JNINativeMethod结构来保存Java native函数数和JNI函数的关联关系"></a>动态方法：使用JNINativeMethod结构来保存Java native函数数和JNI函数的关联关系</h4><p>JNINativeMethod结构:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* name;   <span class="comment">//Java中native函数的名字，不用携带包的路径。例如“native_init“。 </span></div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* signature; <span class="comment">//Java函数的签名信息，用字符串表示，是参数类型和返回值类型的组合。</span></div><div class="line">    <span class="keyword">void</span>*  fnPtr;  <span class="comment">//JNI层对应函数的函数指针，注意它是void*类型。</span></div><div class="line">&#125; JNINativeMethod;</div></pre></td></tr></table></figure></p>
+<p>动态注册主要的两个函数:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">env指向一个JNIEnv结构体，classname为对应的Java类名，由于</div><div class="line">JNINativeMethod中使用的函数名并非全路径名，所以要指明是哪个类。</div><div class="line">*/</div><div class="line">jclass clazz =  (*env)-&gt;FindClass(env, className);</div><div class="line"></div><div class="line"><span class="comment">//调用JNIEnv的RegisterNatives函数，注册关联关系。</span></div><div class="line">(*env)-&gt;RegisterNatives(env, clazz, gMethods,numMethods);</div></pre></td></tr></table></figure></p>
+<p>Java层通过System.loadLibrary加载完JNI动态库后，这时这些动态注册的函数就会被JNI_OnLoad调用。</p>
+<h3 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h3><p>基本类型：<br><img src="/images/深入理解Android/JNI基本类型.jpg" alt="基本类型"><br>引用类型：<br><img src="/images/深入理解Android/JNI引用类型.jpg" alt="引用类型"><br>除了Java中基本数据类型的数组、Class、String和Throwable外，其余所有Java对象的数据类型在JNI中都用jobject表示。</p>
+<h3 id="JNIEnv介绍"><a href="#JNIEnv介绍" class="headerlink" title="JNIEnv介绍"></a>JNIEnv介绍</h3><p>JNIEnv是一个和线程相关的，代表JNI环境的结构体。<br>JNIEnv的内部结构：<br><img src="/images/深入理解Android/JNIEnv的内部结构.png" alt="JNIEnv的内部结构"><br>JNIEnv实际上就是提供了一些JNI系统函数。通过这些函数可以做到：</p>
+<ul>
+<li>调用Java的函数;</li>
+<li>操作jobject对象等很多事情。</li>
+</ul>
+<p>JavaVM与JNIEnv的关系：</p>
+<ul>
+<li>调用JavaVM的AttachCurrentThread函数，就可得到这个线程的JNIEnv结构体。这样就可以在后台线程中回调Java函数了；</li>
+<li>另外，后台线程退出前，需要调用JavaVM的DetachCurrentThread函数来释放对应的资源。</li>
+</ul>
+<h3 id="通过JNIEnv操作jobject"><a href="#通过JNIEnv操作jobject" class="headerlink" title="通过JNIEnv操作jobject"></a>通过JNIEnv操作jobject</h3><p>在JNI规则中，用jfieldID 和jmethodID 来表示Java类的成员变量和成员函数，它们通过JNIEnv的下面两个函数可以得到：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// jclass代表Java类，name表示成员函数或成员变量的名字，sig为这个函数和变量的签名信息</span></div><div class="line"><span class="function">jfieldID <span class="title">GetFieldID</span><span class="params">(jclass clazz,<span class="keyword">const</span> <span class="keyword">char</span>*name, <span class="keyword">const</span> <span class="keyword">char</span> *sig)</span></span>;</div><div class="line"><span class="function">jmethodID <span class="title">GetMethodID</span><span class="params">(jclass clazz, <span class="keyword">const</span> <span class="keyword">char</span>*name,<span class="keyword">const</span> <span class="keyword">char</span> *sig)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>通过JNIEnv输出的Call<type>Method，再把jobject、jMethodID和对应参数传进去，JNI层就能够调用Java对象的函数了。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">调用JNIEnv的CallVoidMethod函数，注意CallVoidMethod的参数：</div><div class="line">第一个是代表MediaScannerClient的jobject对象，</div><div class="line">第二个参数是函数scanFile的jmethodID，后面是Java中scanFile的参数。</div><div class="line">*/</div><div class="line">       mEnv-&gt;CallVoidMethod(mClient, mScanFileMethodID, pathStr,</div><div class="line">lastModified, fileSize);</div></pre></td></tr></table></figure></type></p>
+<p>JNIEnv输出了一系列类似CallVoidMethod的函数，形式如：NativeType Call<type>Method(JNIEnv *env,jobject obj,jmethodID methodID, …)。其中Type是对应Java函数的返回值类型，例如CallIntMethod、CallVoidMethod等。<br>上面是针对非static函数的，如果想调用Java中的static函数，则用JNIEnv输出的CallStatic<type>Method系列函数<br>通过jfieldID操作jobject的成员变量:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获得fieldID后，可调用Get&lt;Type&gt;Field系列函数获取jobject对应成员变量的值。</span></div><div class="line">NativeType Get&lt;Type&gt;Field(JNIEnv *env,jobject obj,jfieldID fieldID)</div><div class="line"><span class="comment">//或者调用Set&lt;Type&gt;Field系列函数来设置jobject对应成员变量的值。</span></div><div class="line"><span class="keyword">void</span> Set&lt;Type&gt;Field(JNIEnv *env,jobject obj,jfieldID fieldID,NativeType value)</div><div class="line"><span class="comment">//下面我们列出一些参加的Get/Set函数。</span></div><div class="line">GetObjectField()         SetObjectField()</div><div class="line">GetBooleanField()        SetBooleanField()</div><div class="line">GetByteField()           SetByteField()</div><div class="line">GetCharField()           SetCharField()</div><div class="line">GetShortField()          SetShortField()</div><div class="line">GetIntField()            SetIntField()</div><div class="line">GetLongField()           SetLongField()</div><div class="line">GetFloatField()          SetFloatField()</div><div class="line">GetDoubleField()         SetDoubleField()</div></pre></td></tr></table></figure></type></type></p>
+<h3 id="jstring介绍"><a href="#jstring介绍" class="headerlink" title="jstring介绍"></a>jstring介绍</h3><ul>
+<li>调用JNIEnv的NewString(JNIEnv <em>env, const jchar</em>unicodeChars,jsize len)，可以从Native的字符串得到一个jstring对象。其实，可以把一个jstring对象看成是Java中String对象在JNI层的代表，也就是说，jstring就是一个Java String。但由于Java String存储的是Unicode字符串，所以NewString函数的参数也必须是Unicode字符串。</li>
+<li>调用JNIEnv的NewStringUTF将根据Native的一个UTF-8字符串得到一个jstring对象。在实际工作中，这个函数用得最多。</li>
+<li>上面两个函数将本地字符串转换成了Java的String对象，JNIEnv还提供了GetStringChars和GetStringUTFChars函数，它们可以将Java String对象转换成本地字符串。其中GetStringChars得到一个Unicode字符串，而GetStringUTFChars得到一个UTF-8字符串。</li>
+<li>另外，如果在代码中调用了上面几个函数，在做完相关工作后，就都需要调用ReleaseStringChars或ReleaseStringUTFChars函数对应地释放资源，否则会导致JVM内存泄露。这一点和jstring的内部实现有关系，读者写代码时务必注意这个问题。</li>
+</ul>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>JNI规范为了解决野指针被使用，提供了三种类型的引用：</p>
+<ul>
+<li>Local Reference：本地引用。在JNI层函数中使用的非全局引用对象都是Local Reference。它包括函数调用时传入的jobject、在JNI层函数中创建的jobject。LocalReference最大的特点就是，一旦JNI层函数返回，这些jobject就可能被垃圾回收。</li>
+<li>Global Reference：全局引用，这种对象如不主动释放，就永远不会被垃圾回收。</li>
+<li>Weak Global Reference：弱全局引用，一种特殊的GlobalReference，在运行过程中可能会被垃圾回收。所以在程序中使用它之前，需要调用JNIEnv的IsSameObject判断它是不是被回收了。</li>
+</ul>
+<p>对于Global Reference：每当JNI层想要保存Java层中的某个对象时，就可以使用Global Reference，使用完后释放它就可以了。<br>对于LocalReference：如果不调用DeleteLocalRef，LocalReference将在函数返回后被回收。如果调用DeleteLocalRef的话，LocalReference会立即被回收。这两者看起来没什么区别，但是可能出现的问题是虚拟机的内存就会被很快被耗尽。所以没有及时回收的LocalReference或许是进程占用过多的一个原因，请务必注意这一点。</p>
+<h3 id="JNI中的异常处理"><a href="#JNI中的异常处理" class="headerlink" title="JNI中的异常处理"></a>JNI中的异常处理</h3><p>JNI层函数可以在代码中截获和修改这些异常，JNIEnv提供了三个函数进行帮助：</p>
+<ul>
+<li>ExceptionOccured函数，用来判断是否发生异常。</li>
+<li>ExceptionClear函数，用来清理当前JNI层中发生的异常。</li>
+<li>ThrowNew函数，用来向Java层抛出异常。</li>
+</ul>
 <blockquote class="blockquote-center"><br>声明: 本文转载前需与<a href="mailto:welliu@outlook.com" target="_blank" rel="external">作者联系</a>并标明<a href="http://www.wellliu.com/" target="_blank" rel="external">出处</a>。<br></blockquote>
       
     </div>
@@ -464,7 +526,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/音乐/" rel="tag"># 音乐</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
           
         </div>
       
@@ -473,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/20/你和成功只差一个Turnin/" rel="next" title="你和成功只差一个Turnin'">
-                <i class="fa fa-chevron-left"></i> 你和成功只差一个Turnin'
+              <a href="/2017/01/03/深入理解Android-一/" rel="next" title="深入理解Android - 系统架构">
+                <i class="fa fa-chevron-left"></i> 深入理解Android - 系统架构
               </a>
             
           </div>
@@ -482,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/22/Blog添加楽功能/" rel="prev" title="Blog添加楽功能">
-                Blog添加楽功能 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/brother.png"
@@ -648,6 +717,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java层"><span class="nav-number">1.</span> <span class="nav-text">Java层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JNI层"><span class="nav-number">2.</span> <span class="nav-text">JNI层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册JNI函数"><span class="nav-number">2.1.</span> <span class="nav-text">注册JNI函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态方法：根据函数名来找对应的JNI函数"><span class="nav-number">2.1.1.</span> <span class="nav-text">静态方法：根据函数名来找对应的JNI函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态方法：使用JNINativeMethod结构来保存Java-native函数数和JNI函数的关联关系"><span class="nav-number">2.1.2.</span> <span class="nav-text">动态方法：使用JNINativeMethod结构来保存Java native函数数和JNI函数的关联关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型转换"><span class="nav-number">2.2.</span> <span class="nav-text">数据类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JNIEnv介绍"><span class="nav-number">2.3.</span> <span class="nav-text">JNIEnv介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过JNIEnv操作jobject"><span class="nav-number">2.4.</span> <span class="nav-text">通过JNIEnv操作jobject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jstring介绍"><span class="nav-number">2.5.</span> <span class="nav-text">jstring介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收"><span class="nav-number">2.6.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JNI中的异常处理"><span class="nav-number">2.7.</span> <span class="nav-text">JNI中的异常处理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
