@@ -1,0 +1,1114 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;(原文地址)  init是是Linux系统中用户空间的第一个进程。由于Android是基于Linux内核的，所以init也是Android系统中用户空间的第一个进程，它的进程号是1。Init进程的两个比较重要的任务是：
+
+Init进程负责创建系统中的几个关键进程，尤其是Zygote，它更是Java世界的开创者;
+Android系统有很多属性，于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解Android - Init">
+<meta property="og:url" content="http://welliu.github.io/2017/01/13/深入理解Android-三/index.html">
+<meta property="og:site_name" content="we new">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;(原文地址)  init是是Linux系统中用户空间的第一个进程。由于Android是基于Linux内核的，所以init也是Android系统中用户空间的第一个进程，它的进程号是1。Init进程的两个比较重要的任务是：
+
+Init进程负责创建系统中的几个关键进程，尤其是Zygote，它更是Java世界的开创者;
+Android系统有很多属性，于">
+<meta property="og:image" content="http://welliu.github.io/images/深入理解Android/zygote解析.png">
+<meta property="og:updated_time" content="2017-01-15T08:28:03.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解Android - Init">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;(原文地址)  init是是Linux系统中用户空间的第一个进程。由于Android是基于Linux内核的，所以init也是Android系统中用户空间的第一个进程，它的进程号是1。Init进程的两个比较重要的任务是：
+
+Init进程负责创建系统中的几个关键进程，尤其是Zygote，它更是Java世界的开创者;
+Android系统有很多属性，于">
+<meta name="twitter:image" content="http://welliu.github.io/images/深入理解Android/zygote解析.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://welliu.github.io/2017/01/13/深入理解Android-三/"/>
+
+
+
+
+
+  <title> 深入理解Android - Init | we new </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">we new</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">越是憧憬 越要风雨兼程</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+<!-- 参考Never_yu的High一下功能 
+     网站位置：https://neveryu.github.io/2016/09/30/hexo-next-two,
+               https://neveryu.github.io/2016/11/11/hexo-next-three/-->
+    <li class="menu-item"> <a href='javascript:(
+    function go() {
+
+      var songs = [
+          "http://m2.music.126.net/-7v4xG0rqcFO36WRxqh7IQ==/2538772350338023.mp3",
+          "http://m2.music.126.net/O8RMqPVgtz5Qp_i1PBeBaQ==/5969248627774562.mp3",
+          "http://m2.music.126.net/3HglVSQUxqesNvCL2WKBUg==/1244647162662086.mp3"
+      ];
+ 
+      function S() {
+          var e = document.getElementById("audio_element_id");
+          if(e != null){
+              var index = parseInt(e.getAttribute("curSongIndex"));
+              if(index > songs.length - 2) {
+                  index = 0;
+              } else {
+                  index++;
+              }
+              e.setAttribute("curSongIndex", index);
+          }
+
+          e.src = i;
+          e.play()
+      }
+
+
+      function initAudioEle() {
+          var e = document.getElementById("audio_element_id");
+          if(e === null){
+            e = document.createElement("audio");
+            e.setAttribute("curSongIndex", 0);
+            e.id = "audio_element_id";
+            e.loop = false;
+            e.bgcolor = 0;
+
+            e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+            document.body.appendChild(e);
+
+            e.addEventListener("ended", function() {
+              go();
+            }, true);
+          }        
+      }
+    
+      initAudioEle();
+      var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
+      var i = songs[curSongIndex];
+      S();
+
+    })()'>
+    <i class="menu-item-icon fa fa-music fa-fw"></i>楽</a> </li>
+<!-- end High一下 -->
+
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://welliu.github.io/2017/01/13/深入理解Android-三/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wel liu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/brother.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="we new">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="we new" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入理解Android - Init
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T20:32:28+08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/13/深入理解Android-三/" class="leancloud_visitors" data-flag-title="深入理解Android - Init">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>&#160; &#160; &#160; &#160;<a href="http://blog.csdn.net/innost/article/details/47204675" target="_blank" rel="external">(原文地址)</a>  init是是Linux系统中用户空间的第一个进程。由于Android是基于Linux内核的，所以init也是Android系统中用户空间的第一个进程，它的进程号是1。Init进程的两个比较重要的任务是：</p>
+<ul>
+<li>Init进程负责创建系统中的几个关键进程，尤其是Zygote，它更是Java世界的开创者;</li>
+<li>Android系统有很多属性，于是init就提供了一个property service（属性服务）来管理它们。</li>
+</ul>
+<p>&#160; &#160; &#160; &#160;<strong> Keywords:  Init  </strong><br><a id="more"></a></p>
+<h2 id="init分析"><a href="#init分析" class="headerlink" title="init分析"></a>init分析</h2><p>init将动作执行的时间划分为四个阶段：early-init、init、early-boot、boot。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//init关注来自四个方面的事情。</span></div><div class="line">   ufds[<span class="number">0</span>].fd= device_fd;<span class="comment">//device_fd用于监听来自内核的Uevent事件</span></div><div class="line">   ufds[<span class="number">0</span>].events = POLLIN;</div><div class="line">   ufds[<span class="number">1</span>].fd = property_set_fd;<span class="comment">//property_set_fd用于监听来自属性服务器的事件</span></div><div class="line">ufds[<span class="number">1</span>].events= POLLIN;</div><div class="line"><span class="comment">//signal_recv_fd由socketpair创建，它的事件来自另外一个socket。</span></div><div class="line">   ufds[<span class="number">2</span>].fd = signal_recv_fd;</div><div class="line">   ufds[<span class="number">2</span>].events = POLLIN;</div><div class="line">   fd_count = <span class="number">3</span>;</div><div class="line"><span class="keyword">if</span>(keychord_fd &gt; <span class="number">0</span>) &#123;</div><div class="line">   <span class="comment">//如果keychord设备初始化成功，则init也会关注来自这个设备的事件。</span></div><div class="line">       ufds[<span class="number">3</span>].fd = keychord_fd;</div><div class="line">       ufds[<span class="number">3</span>].events = POLLIN;</div><div class="line">       fd_count++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>init的工作流程精简为以下四点：</p>
+<ul>
+<li>解析两个配置文件;</li>
+<li>执行各个阶段的动作，创建Zygote的工作就是在其中的某个阶段完成的;</li>
+<li>调用property_init初始化属性相关的资源，并且通过property_start_service启动属性服务;</li>
+<li>Init进入一个无限循环，并且等待一些事情的发生。重点关注init如何处理来自socket和来自属性服务器相关的事情。</li>
+</ul>
+<h3 id="解析配置文件"><a href="#解析配置文件" class="headerlink" title="解析配置文件"></a>解析配置文件</h3><p>在init中会解析两个配置文件，一个是系统配置文件init.rc，另外一个是和硬件平台相关的配置文件。对这两个配置文件进行解析，调用的是同一个parse_config_file函数。<br>parse_config会先找到配置文件的一个section，针对不同的section使用不同的解析函数来解析。<br>对init.rc进行分析：</p>
+<ul>
+<li>一个section的内容从这个标示section的关键字开始，到下一个标示section的地方结束。</li>
+<li>init.rc中出现了名为boot和init的section，这里的boot和init，就是前面介绍的动作执行四个阶段中的boot和init。也就是说，在boot阶段执行的动作都是由boot这个section定义的。</li>
+</ul>
+<h3 id="解析service"><a href="#解析service" class="headerlink" title="解析service"></a>解析service</h3><h4 id="解析函数"><a href="#解析函数" class="headerlink" title="解析函数"></a>解析函数</h4><p>service解析时，用到了parse_service和parse_line_service两个函数：</p>
+<ul>
+<li>parse_service函数只是搭建了一个service的架子，具体的内容尚需由后面的解析函数来填充；</li>
+<li>parse_line_service将根据配置文件的内容填充service结构体。<h4 id="service属性"><a href="#service属性" class="headerlink" title="service属性"></a>service属性</h4>service一共有六个属性，分别为：</li>
+<li>SVC_DISABLED：不随class自动启动。</li>
+<li>SVC_ONESHOT：退出后不需要重启，也就是这个service只启动一次就可以了。</li>
+<li>VC_RUNNING：正在运行，这是service的状态。</li>
+<li>SVC_RESTARTING：等待重启，这也是service的状态。</li>
+<li>SVC_CONSOLE：该service需要使用控制台 。</li>
+<li>SVC_CRITICAL：如果在规定时间内该service不断重启，则系统会重启并进入恢复模式。<br>如果没有使用任何属性，如zygote，这表明它：会随着class的处理自动启动；退出后会由init重启；不使用控制台；即使不断重启也不会导致系统进入恢复模式。<h4 id="zygote解析结果"><a href="#zygote解析结果" class="headerlink" title="zygote解析结果"></a>zygote解析结果</h4><img src="/images/深入理解Android/zygote解析.png" alt=""><br>从上图中可知：</li>
+<li>service_list链表将解析后的service全部链接到了一起，并且是一个双向链表，前向节点用prev表示，后向节点用next表示。</li>
+<li>socketinfo也是一个双向链表，因为zygote只有一个socket，所以画了一个虚框socket做为链表的示范。</li>
+<li>onrestart通过commands指向一个commands链表，zygote有三个commands。</li>
+</ul>
+<blockquote class="blockquote-center"><br>声明: 本文转载前需与<a href="mailto:welliu@outlook.com" target="_blank" rel="external">作者联系</a>并标明<a href="http://www.wellliu.com/" target="_blank" rel="external">出处</a>。<br></blockquote>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/04/深入理解Android-二/" rel="next" title="深入理解Android - JNI">
+                <i class="fa fa-chevron-left"></i> 深入理解Android - JNI
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/brother.png"
+               alt="wel liu" />
+          <p class="site-author-name" itemprop="name">wel liu</p>
+          <p class="site-description motion-element" itemprop="description">吞风吻雨葬落日 欺山赶海践雪径</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/welliu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:welliu@outlook.com" target="_blank" title="邮箱">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  邮箱
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              常用链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://stackoverflow.com/" title="Stack Overflow" target="_blank">Stack Overflow</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dir.scmor.com/google/" title="Google学术" target="_blank">Google学术</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhanzhang.baidu.com/dashboard/index" title="百度站长" target="_blank">百度站长</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://unsplash.com/" title="unsplash" target="_blank">unsplash</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://isujin.com/" title="素锦" target="_blank">素锦</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bbs.rainmeter.cn/" title="雨滴" target="_blank">雨滴</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://music.163.com/#/playlist?id=90312925" title="我的歌单" target="_blank">我的歌单</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#init分析"><span class="nav-number">1.</span> <span class="nav-text">init分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析配置文件"><span class="nav-number">1.1.</span> <span class="nav-text">解析配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析service"><span class="nav-number">1.2.</span> <span class="nav-text">解析service</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解析函数"><span class="nav-number">1.2.1.</span> <span class="nav-text">解析函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#service属性"><span class="nav-number">1.2.2.</span> <span class="nav-text">service属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zygote解析结果"><span class="nav-number">1.2.3.</span> <span class="nav-text">zygote解析结果</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wel liu  <a class="theme-link" href="https://welliu.github.io">本站</a>作品版权为<a class="theme-link" href="mailto:welliu@outlook.com">本人</a>所有，转载需取得<a class="theme-link" href="mailto:welliu@outlook.com">本人</a>同意并在明显位置处注明出处</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("V5cpIIayElKrJtQ9tcGbK8J1-gzGzoHsz", "Sol41nOa8w2WoCLe7FHKLMAB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+<!-- �������� -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</body>
+</html>

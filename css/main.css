@@ -964,16 +964,6 @@ pre .javascript .function {
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
 }
-@media (max-width: 767px) {
-  .back-to-top {
-    display: none;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .back-to-top {
-    display: none;
-  }
-}
 .back-to-top.back-to-top-on {
   bottom: 19px;
 }
@@ -1571,16 +1561,6 @@ pre .javascript .function {
   cursor: pointer;
   -webkit-transform: translateZ(0);
 }
-@media (min-width: 768px) and (max-width: 991px) {
-  .sidebar-toggle {
-    display: none;
-  }
-}
-@media (max-width: 767px) {
-  .sidebar-toggle {
-    display: none;
-  }
-}
 .sidebar-toggle-line {
   position: relative;
   display: inline-block;
@@ -1785,7 +1765,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8500df;
+  background: #4effff;
 }
 .links-of-blogroll {
   font-size: 13px;
