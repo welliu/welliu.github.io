@@ -408,6 +408,13 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/25/Android运行时权限/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/25/Android运行时权限/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -439,7 +446,7 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><p>闲的没事做一个个人的app，把自己经常用到的全部写上，譬如刷自己的网站，发送邮件，打1008611查话费之类的（p.s. 搞的经常用一样~）。在写Intent来调用手机拨号功能的时候，一开始调用 ACTION_DIAL 没问题，结果我看到了 ACTION_CALL 就在想少按一个键好像能轻松不少的样子（p.s. 搞的跟真的一样~）。结果一直调没出来这就很尴尬，然后就有下面的一系列折腾。</p>
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>闲的没事做一个个人的app，把自己经常用到的全部写上，譬如刷自己的网站，发送邮件，打1008611查话费之类的（p.s. 搞的经常用一样~）。在写Intent来调用手机拨号功能的时候，一开始调用 ACTION_DIAL 没问题，结果我看到了 ACTION_CALL 就在想少按一个键好像能轻松不少的样子（p.s. 搞的跟真的一样~）。结果一直调没出来这就很尴尬，然后就有下面的一系列折腾。</p>
 <a id="more"></a>
 <h2 id="过程详述"><a href="#过程详述" class="headerlink" title="过程详述"></a>过程详述</h2><p>提示是Call_Phone的权限没加，然后就到Manifest加上<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CALL_PHONE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>还是没有什么卵用。<br>然后查到<a href="http://stackoverflow.com/questions/33208974/activity-intent-permission-android-m-sdk-23" target="_blank" rel="external">stackoverflow</a>有人回答说是api是23+的话，需要判断程序 permissions runtime。修改之后，AS提示对23一下的也要兼容，参考了一下<a href="https://segmentfault.com/q/1010000004558049" target="_blank" rel="external">这个解决方法</a>，加了两个判断，运行没问题了。代码是<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT&gt;=Build.VERSION_CODES.M) &#123;</div><div class="line">	<span class="keyword">if</span> (MainActivity.<span class="keyword">this</span>.checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">        callPhone();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        Log.i(<span class="string">"test"</span>, <span class="string">"User doesnot agree this permission"</span>);</div><div class="line">        requestPermissions(<span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,REQUEST_CODE_ASK_PERMISSIONS);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line">    callPhone();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">callPhone</span><span class="params">()</span></span>&#123;</div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">    intent.setData(Uri.parse(<span class="string">"tel:1008611"</span>));</div><div class="line">    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">    startActivity(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -522,6 +529,41 @@
 
     <div class="post-spread">
       
+        <!--MOB SHARE BEGIN-->
+<div class="-hoofoo-share-title">分享到：</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=1c010a84dfb38"></script>
+<!--MOB SHARE END-->
+      
     </div>
   </div>
 
@@ -532,6 +574,10 @@
 
           
   <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/25/Android运行时权限/"
+           data-title="Android运行时权限" data-url="http://welliu.github.io/2017/01/25/Android运行时权限/">
+      </div>
     
   </div>
 
@@ -823,14 +869,33 @@
 
   
 
+  
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wellliu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
 
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
 
 
 
-	
 
 
 
@@ -1091,6 +1156,14 @@
 
 
   
+
+  
+<script type="text/javascript">
+	//微信二维码点击背景关闭
+	$('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+ 		$(".-mob-share-weixin-qrcode-close").trigger("click");
+	}); 
+</script>
 
 <!-- �������� -->
 <script type="text/javascript" src="/js/src/particle.js"></script>
