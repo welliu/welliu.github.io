@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://welliu.github.io/2017/02/25/Groovy-只为更短而生/index.html">
 <meta property="og:site_name" content="we new">
 <meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;这段时间的任务需要用到Groovy知识，然后学习了一波，感觉还是跟之前学的编程语言相比更加简便，更加灵活。之后逛知乎的时候，有人评论说超过两百行的代码，都不用这类语言，我表示只是小白不多说~这几天接触下来，给我的感觉是，Groovy代码写的越短就感觉越牛批！所以下面就介绍怎么用更短的代码来代替。暂时涉及到的都是比较基础的代码部分，参考资料是 《Gro">
-<meta property="og:updated_time" content="2017-02-26T10:24:26.147Z">
+<meta property="og:updated_time" content="2017-03-11T14:22:08.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Groovy: 只为更短而生">
 <meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;这段时间的任务需要用到Groovy知识，然后学习了一波，感觉还是跟之前学的编程语言相比更加简便，更加灵活。之后逛知乎的时候，有人评论说超过两百行的代码，都不用这类语言，我表示只是小白不多说~这几天接触下来，给我的感觉是，Groovy代码写的越短就感觉越牛批！所以下面就介绍怎么用更短的代码来代替。暂时涉及到的都是比较基础的代码部分，参考资料是 《Gro">
@@ -437,7 +437,7 @@
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>&#160;&#160;&#160;&#160;这段时间的任务需要用到Groovy知识，然后学习了一波，感觉还是跟之前学的编程语言相比更加简便，更加灵活。之后逛知乎的时候，有人评论说超过两百行的代码，都不用这类语言，我表示只是小白不多说~这几天接触下来，给我的感觉是，Groovy代码写的越短就感觉越牛批！所以下面就介绍怎么用更短的代码来代替。暂时涉及到的都是比较基础的代码部分，参考资料是<strong> 《Groovy程序设计》 </strong>，<strong> <a href="http://blog.csdn.net/kmyhy/article/details/4200563" target="_blank" rel="external">Groovy入门教程</a> </strong> (p.s.《Groovy in action》英文版900多页，等有时间了再去看~)</p>
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><p>&#160;&#160;&#160;&#160;这段时间的任务需要用到Groovy知识，然后学习了一波，感觉还是跟之前学的编程语言相比更加简便，更加灵活。之后逛知乎的时候，有人评论说超过两百行的代码，都不用这类语言，我表示只是小白不多说~这几天接触下来，给我的感觉是，Groovy代码写的越短就感觉越牛批！所以下面就介绍怎么用更短的代码来代替。暂时涉及到的都是比较基础的代码部分，参考资料是<strong> 《Groovy程序设计》 </strong>，<strong> <a href="http://blog.csdn.net/kmyhy/article/details/4200563" target="_blank" rel="external">Groovy入门教程</a> </strong> (p.s.《Groovy in action》英文版900多页，等有时间了再去看~)</p>
 <a id="more"></a>
 <p>&#160;&#160;&#160;&#160;文章的结构由浅入深。引用一句别人说的话就是，“groovy对于对象是什么类型并不关心，一个变量的类型在运行中随时可以改变，一切根据需要而定。”</p>
 <h2 id="这个GString绝对不是只多加了一个G"><a href="#这个GString绝对不是只多加了一个G" class="headerlink" title="这个GString绝对不是只多加了一个G"></a>这个GString绝对不是只多加了一个G</h2><h3 id="双引号变单引号，少的不止是两个点"><a href="#双引号变单引号，少的不止是两个点" class="headerlink" title="双引号变单引号，少的不止是两个点~"></a>双引号变单引号，少的不止是两个点~</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">println <span class="string">"hello $value"</span></div><div class="line">println <span class="string">'hello '</span>+value</div></pre></td></tr></table></figure>
