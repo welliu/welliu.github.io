@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://welliu.github.io/2017/03/17/Java知识梳理（一）/index.html">
 <meta property="og:site_name" content="we new">
 <meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近面试的需要考察java的知识点，于是就趁着这个机会就把Java的知识点梳理了一遍。这个系列感觉要能写不少东西，所以第一部分，就先把自己参考的网站分个类，和一些总结性，纲领性的文章放上来。">
-<meta property="og:updated_time" content="2017-03-17T15:35:28.282Z">
+<meta property="og:updated_time" content="2017-03-17T15:48:22.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java知识梳理 - 链接整理">
 <meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近面试的需要考察java的知识点，于是就趁着这个机会就把Java的知识点梳理了一遍。这个系列感觉要能写不少东西，所以第一部分，就先把自己参考的网站分个类，和一些总结性，纲领性的文章放上来。">
@@ -439,7 +439,6 @@
       
         <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>&#160;&#160;&#160;&#160;最近面试的需要考察java的知识点，于是就趁着这个机会就把Java的知识点梳理了一遍。这个系列感觉要能写不少东西，所以第一部分，就先把自己参考的网站分个类，和一些总结性，纲领性的文章放上来。</p>
 <a id="more"></a>
-<h2 id="最重要的事情"><a href="#最重要的事情" class="headerlink" title="最重要的事情"></a>最重要的事情</h2><p>不是技术，也不是能力，而是简历！不要简历上面为图华丽，就各种掌握研究的，自己水平是什么程度就按实际情况去说，否则别人面你的时候，一看到掌握就问的深入一些，回答不上来不就尴尬了。</p>
 <h2 id="整体上的准备"><a href="#整体上的准备" class="headerlink" title="整体上的准备"></a>整体上的准备</h2><p><a href="https://www.zhihu.com/question/26473278/answer/32918995" target="_blank" rel="external">如何准备春招？（知乎原回答链接）</a></p>
 <blockquote class="blockquote-center"> 为了过笔试，先把C++ Primer, 5th Edition (豆瓣) 9-15章以及程序员面试宝典 (豆瓣)看完。对，后者确实是垃圾，我是让你看选择题，那可是实实在在笔试题里选的（虽然也是垃圾），而且经常考到！面试语言以及笔试算法题用java，完全没问题，不过你的方向不对，比如你提到的Thinking in Java (豆瓣)，同样应该被归入长期计划，校招季前就应该读完。来不及读的话，初始化及GC，集合容器，IO，并发这四章比较关键，但是深度完全不够！深入理解Java虚拟机 (豆瓣)，Java并发编程实战 (豆瓣)这些书关于gc策略，内存模型，并发编程部分必须十分熟悉。经常问的问题：java中有哪些轻量级的锁？自旋锁是为了解决什么问题？偏向锁如何实现可重入性？简单实现带分段锁的hashmap?画一画java对象的内存模型？collection中sort方法的实现？（如果能说到timsort对于归并的优化加分）HotSpot新生代老年代各自的gc策略以及收集器种类？有没有进行过JVM调优？做过哪些开源项目或者读过源码（加分项，很多人熟悉guava和mahout，可以继续深挖）？c++的话，深度探索C++对象模型  必看，属于短期提高。2.数据结构与算法c++ ：STL源码剖析 java: 算法（第4版） JDK中collection和concurrent包源码，有时间guava collections源码算法部分长期：算法导论 算法心得：高效算法的奥秘编程珠玑 短期：剑指Offer 程序员面试金典  leetcode 编程之美 经常问的问题都在以上书中，偶尔会结合数据库问问B+树索引之类。面试中很多问题能给出trie树，后缀树等数据结构优化算法效率的，或者在一个问题问出后，主动问及查询次数以及规模（比如求第K大）等，都是加分项。其余部分不一一列举了最后回答题主问题，因为80%的offer掌握在了20%的人手中，而他们只能选其中一家。所以虽然秋招有意识的多发，还是有很多空缺。春招加油。</blockquote>
 
@@ -708,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最重要的事情"><span class="nav-number">1.</span> <span class="nav-text">最重要的事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体上的准备"><span class="nav-number">2.</span> <span class="nav-text">整体上的准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合"><span class="nav-number">3.</span> <span class="nav-text">综合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合类"><span class="nav-number">4.</span> <span class="nav-text">集合类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程与并发"><span class="nav-number">5.</span> <span class="nav-text">多线程与并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaGC"><span class="nav-number">6.</span> <span class="nav-text">JavaGC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">7.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#海量数据处理"><span class="nav-number">7.1.</span> <span class="nav-text">海量数据处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体上的准备"><span class="nav-number">1.</span> <span class="nav-text">整体上的准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合"><span class="nav-number">2.</span> <span class="nav-text">综合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合类"><span class="nav-number">3.</span> <span class="nav-text">集合类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程与并发"><span class="nav-number">4.</span> <span class="nav-text">多线程与并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaGC"><span class="nav-number">5.</span> <span class="nav-text">JavaGC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">6.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#海量数据处理"><span class="nav-number">6.1.</span> <span class="nav-text">海量数据处理</span></a></li></ol></li></ol></div>
             
 
           </div>
