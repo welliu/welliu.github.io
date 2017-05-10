@@ -740,10 +740,6 @@
 
       
         
-          <div class="out-img-topic">
-            <img src=/images/摘要配图/java.jpg class="img-topic">
-          </div>
-        
         
           <p>&#160;&#160;&#160;&#160;最近需要处理xml文件，一千万条数据分在10个文件中，写入和写出都要实现。文件太大一次性加载整个document不太可能，所以就直接跳过了DOM的方式，用dom4j来实现功能的。结果跑到第一个文件的时候就崩了。修改了一波，实现了ElementHandler的onStart、onEnd方法，onEnd方法里面处理每一个item，并调用detach释放节点。跑到500万的数据又崩了一次，提示OOM: GC overhead limit exceeded，结果给jvm加了4G的内存，跑通了~原因的话，查了一些资料还没明白，先留个坑在这里，等深入理解jvm看完之后，再来复现一下堆栈看看能不能找出来。</p>
           <!--noindex-->

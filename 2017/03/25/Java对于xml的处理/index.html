@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://welliu.github.io/2017/03/25/Java对于xml的处理/index.html">
 <meta property="og:site_name" content="we new">
 <meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近需要处理xml文件，一千万条数据分在10个文件中，写入和写出都要实现。文件太大一次性加载整个document不太可能，所以就直接跳过了DOM的方式，用dom4j来实现功能的。结果跑到第一个文件的时候就崩了。修改了一波，实现了ElementHandler的onStart、onEnd方法，onEnd方法里面处理每一个item，并调用detach释放节">
-<meta property="og:updated_time" content="2017-03-27T16:40:55.292Z">
+<meta property="og:updated_time" content="2017-05-10T15:41:52.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现SAX、DOM4j对xml的处理">
 <meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近需要处理xml文件，一千万条数据分在10个文件中，写入和写出都要实现。文件太大一次性加载整个document不太可能，所以就直接跳过了DOM的方式，用dom4j来实现功能的。结果跑到第一个文件的时候就崩了。修改了一波，实现了ElementHandler的onStart、onEnd方法，onEnd方法里面处理每一个item，并调用detach释放节">
