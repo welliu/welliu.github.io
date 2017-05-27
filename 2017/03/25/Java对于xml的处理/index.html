@@ -437,7 +437,7 @@
       
 
       
-        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>&#160;&#160;&#160;&#160;最近需要处理xml文件，一千万条数据分在10个文件中，写入和写出都要实现。文件太大一次性加载整个document不太可能，所以就直接跳过了DOM的方式，用dom4j来实现功能的。结果跑到第一个文件的时候就崩了。修改了一波，实现了ElementHandler的onStart、onEnd方法，onEnd方法里面处理每一个item，并调用detach释放节点。跑到500万的数据又崩了一次，提示OOM: GC overhead limit exceeded，结果给jvm加了4G的内存，跑通了~原因的话，查了一些资料还没明白，先留个坑在这里，等深入理解jvm看完之后，再来复现一下堆栈看看能不能找出来。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><p>&#160;&#160;&#160;&#160;最近需要处理xml文件，一千万条数据分在10个文件中，写入和写出都要实现。文件太大一次性加载整个document不太可能，所以就直接跳过了DOM的方式，用dom4j来实现功能的。结果跑到第一个文件的时候就崩了。修改了一波，实现了ElementHandler的onStart、onEnd方法，onEnd方法里面处理每一个item，并调用detach释放节点。跑到500万的数据又崩了一次，提示OOM: GC overhead limit exceeded，结果给jvm加了4G的内存，跑通了~原因的话，查了一些资料还没明白，先留个坑在这里，等深入理解jvm看完之后，再来复现一下堆栈看看能不能找出来。</p>
 <a id="more"></a>
 <h2 id="DOM与SAX的优缺点分析"><a href="#DOM与SAX的优缺点分析" class="headerlink" title="DOM与SAX的优缺点分析"></a>DOM与SAX的优缺点分析</h2><h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>DOM是基于树的结构，通常需要加载整文档和构造DOM树，然后才能开始工作<br>优点：</p>
 <ul>
@@ -616,7 +616,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">69</span>
+              <span class="site-state-item-count">70</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
