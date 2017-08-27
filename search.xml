@@ -31,34 +31,6 @@
 
     
     <entry>
-      <title><![CDATA[云田·赤脚的少年]]></title>
-      <url>%2F2017%2F05%2F20%2F%E4%BA%91%E7%94%B0%C2%B7%E8%B5%A4%E8%84%9A%E7%9A%84%E5%B0%91%E5%B9%B4%2F</url>
-      <content type="text"><![CDATA[他踩过草，他踩过泥，他踩过湖底下滑溜溜的鱼鳞他踩过风，他踩过雨，他踩过坑洼里湿漉漉的太阳他踩过路，他踩过桥，他踩过石板上光秃秃的树影他踩过冰，他踩过雪，他踩过莽野中白晃晃的月光他踩过的，都在他心底留下一串脚印声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[大河·所谓自由]]></title>
-      <url>%2F2017%2F05%2F20%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%89%80%E8%B0%93%E8%87%AA%E7%94%B1%2F</url>
-      <content type="text"><![CDATA[缰绳慢慢收紧渐渐不能呼吸缰绳稍稍放松它喘息着庆幸把这命名为自由声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·睡醒]]></title>
-      <url>%2F2017%2F05%2F10%2F%E4%BA%91%E7%94%B0%C2%B7%E7%9D%A1%E9%86%92%2F</url>
-      <content type="text"><![CDATA[雾梦中疲倦地醒来心底已没了声响与我话莲的人许是消散了 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·植念]]></title>
-      <url>%2F2017%2F04%2F18%2F%E4%BA%91%E7%94%B0%C2%B7%E6%A4%8D%E5%BF%B5%2F</url>
-      <content type="text"><![CDATA[走过的路口忘掉的人流逝的岁月无名的歌 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[实现SAX、DOM4j对xml的处理]]></title>
       <url>%2F2017%2F03%2F25%2FJava%E5%AF%B9%E4%BA%8Exml%E7%9A%84%E5%A4%84%E7%90%86%2F</url>
       <content type="text"><![CDATA[&#160;&#160;&#160;&#160;最近需要处理xml文件，一千万条数据分在10个文件中，写入和写出都要实现。文件太大一次性加载整个document不太可能，所以就直接跳过了DOM的方式，用dom4j来实现功能的。结果跑到第一个文件的时候就崩了。修改了一波，实现了ElementHandler的onStart、onEnd方法，onEnd方法里面处理每一个item，并调用detach释放节点。跑到500万的数据又崩了一次，提示OOM: GC overhead limit exceeded，结果给jvm加了4G的内存，跑通了~原因的话，查了一些资料还没明白，先留个坑在这里，等深入理解jvm看完之后，再来复现一下堆栈看看能不能找出来。 DOM与SAX的优缺点分析DOMDOM是基于树的结构，通常需要加载整文档和构造DOM树，然后才能开始工作优点： 由于整棵树在内存中，因此可以对xml文档随机访问 可以对xml文档进行修改操作 较sax，dom使用也更简单。 缺点： 整个文档必须一次性解析完 由于整个文档都需要载入内存，对于大文档成本高 SAXSAX类似流媒体，它基于事件驱动的，因此无需将整个文档载入内存，使用者只需要监听自己感兴趣的事件即可。优点： 无需将整个xml文档载入内存，因此消耗内存少 可以注册多个ContentHandler 缺点： 不能随机的访问xml中的节点 不能修改文档 DOM4JDOM4J提供了两种解析xml的方式:DOM解析和SAX解析。因处理的文件规模较为庞大而采用SAX的实现方式。12345678910111213141516171819202122232425262728293031323334353637383940414243444546public class myDom4j &#123; public static void main(String[] args) &#123; read("test1.xml"); &#125; public static void read(String fileName) &#123; try &#123; SAXReader reader = new SAXReader(); reader.addHandler("xpath", new ElementHandler() &#123; @Override public void onStart(ElementPath elementPath)&#123; //System.out.println(elementPath); &#125; @Override public void onEnd(ElementPath elementPath) &#123; Element row= elementPath.getCurrent(); List&lt;Element&gt; lstNode = row.elements(); for(Element e:lstNode) &#123; System.out.println(e.getQName().getName()); &#125; row.detach(); &#125; &#125;); //step 2: 读取并处理xml InputStream in = null; try &#123; in = xIntersect.class.getClassLoader().getResourceAsStream(fileName); System.out.println("read Start!"); reader.read(in); System.out.println("read Finish!"); &#125;catch (Exception e)&#123; e.printStackTrace(); &#125;finally &#123; if(in!=null) in.close(); in = null; &#125; &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; &#125;&#125; SAXSAX不用将整个文档加载到内存，基于事件驱动的API(Observer模式)，用户只需要注册自己感兴趣的事件即可。SAX提供EntityResolver, DTDHandler, ContentHandler, ErrorHandler接口，分别用于监听解析实体事件、DTD处理事件、正文处理事件和处理出错事件，与AWT类似，SAX还提供了一个对这4个接口默认的类DefaultHandler（这里的默认实现，其实就是一个空方法），一般只要继承DefaultHandler，重写自己感兴趣的事件即可。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172public class xSecond &#123; public static void main(String[] args) &#123; read("test1.xml"); &#125; public static void read(String fileName) &#123; try &#123; SAXParserFactory factory = SAXParserFactory.newInstance(); SAXParser parser = factory.newSAXParser(); InputStream in = null; try &#123; in = xUrl.class.getClassLoader().getResourceAsStream(fileName); parser.parse(in,new DefaultHandler()&#123; public String name=null; public String url=null; public String title=null; @Override public void startDocument() throws SAXException &#123; System.out.println("开始解析文档"); &#125; @Override public void endDocument() throws SAXException &#123; System.out.println("解析文档结束"); &#125; @Override public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException &#123; super.startElement(uri, localName, qName, attributes); name = qName; &#125; @Override public void endElement(String uri, String localName, String qName) throws SAXException &#123; super.endElement(uri, localName, qName); name =""; &#125; @Override public void characters(char[] ch, int start, int length) throws SAXException &#123; String text=new String(ch, start, length); //获取文本节点内容 switch(name)&#123; case "url": url = text;break; case "title": if(title!=null)&#123; title = title+text; // title 中有一些特殊字符的情况 &#125;else&#123; title = text; &#125;break; default: &#125; &#125; &#125;); &#125;catch (Exception e)&#123; e.printStackTrace(); &#125;finally &#123; if(in!=null) in.close(); in = null; &#125; &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; &#125;&#125; 其他小事项一些功能性的代码没有贴出来，不过也不影响实现，主要是特定的xml文件处理方式。在实现的过程中也被自己坑到过，现在就来总结一下那些坑。 OOM与subString,split没啥关系一开始OOM还不会用heap snap和内存分析工具，就自己查资料，看到说subString与split会造成内存的泄露，一看说的还挺有道理，就改了一波。然并卵，该错的还是没对，就看追踪源码，和分析的源码有点出入，在仔细一查，原来1.7以后的实现有改动，不是保留原来的字串了，而是直接创建一个新的。果然各种版本的改动还是得多了解了解。 关于ArrayList以及Map的一些用法ArrayList ,string , string[] 数组的转换 以及二维数组定义ArrayList如何用一行代码初始化一个ArrayListjava Map集合嵌套value为Map和value为List Java实现交并补用java求“交、叉、并集”原来这么简单，用HashSet的方式来求，在低耦合的情况下，效率高，扩展性也好。 写入xml大量数据写入到xml文件中: http://bbs.csdn.net/topics/300177064伪代码：12345678910File xmlFile;OutputStream xmlOut = new FileOutputStream(xmlFile);xmlOut.write(root开始tag);for(data:datas)&#123; Document doc = dom4j jdom把一条记录data转化为dom结构 byte docBytes[] = 将doc结构转化为byte[] xmlOut.write(docBytes); xmlOut.write(换行);&#125;xmlOut.write(root开始tag); 注意SAX的characters方法遇到空白字符的情况因为一些element的text内容包含特殊字符，如&amp; amp; 我尝试用org.apache.commons.lang的静态方法去处理，结果无论是html还是xml都不行。之后我就输出Unicode码，发现是分段输出的，之后猜想是characters遇到特殊字符或者是空格发生了截断（有待查源码验证），于是就加一步判断，如果为null就赋值，如果不为null，就加上之前的字串，结果字符串输出正常。 参考资料Java解析XML汇总（DOM/SAX/JDOM/DOM4j/XPathDOM4J解析大数据的方案dom4j处理xml文件-saxreader与elementhandler的配合XML解析——SAX方式那些你一直没有搞明白的Java缓冲流细节 声明: 本文转载前需与作者联系并标明出处。]]></content>
@@ -262,13 +234,6 @@
 
     
     <entry>
-      <title><![CDATA[谈信仰（未完）]]></title>
-      <url>%2F2016%2F11%2F20%2F%E8%B0%88%E4%BF%A1%E4%BB%B0%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;什么是信仰？它是世间所有的花！它是世间所有的颜色！它是世间所有的光和希望！无论什么苦难险阻它都支撑你前行，无论成功或者失败它都让你感动，无论是身在何处都使你谦卑。&#160; &#160; &#160; &#160;不管你是亿万沙子中最平凡的一粒，还是亿万星辰中最闪亮的一颗，有了信仰，你便是你自己。但是有了信仰，你便会发现一切都不再那么容易获得，你便会发现痛苦从未如此的深刻，快乐也从未如此的感人，你便会发现代价不会再被计较，你便会发现付出也是开心的，你便会发现自己从未如此真实的活在这个世间。&#160; &#160; &#160; &#160;信仰不是目标，它不可被具象，只能被感受。离目标越近便离信仰越远，当你认为到达时，你便永远的失去了它。我们什么时候信仰离最近，便是最初的时候。所以需要时时清空自己，反思自己。 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[在hexo博客foot位置处添加版权说明]]></title>
       <url>%2F2016%2F11%2F18%2F%E5%9C%A8hexo%E5%8D%9A%E5%AE%A2foot%E4%BD%8D%E7%BD%AE%E5%A4%84%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E8%AF%B4%E6%98%8E%2F</url>
       <content type="text"><![CDATA[想加一个版权说明，其实在主题配置文件中大概是160行处已经有了，只要把 creative_commons: by-nc-sa 这句的注释去掉，然后就可以在侧栏的位置处，出现一个cc图标点击就可以链接到网站。不过感觉那个版权的内容不太适合，就自己在foot的位置处，添加了一行 版权说明。参考了 Codeagles的文章(Hexo-Next底部更改) 步骤: 打开 \themes\next\layout_partials\下面的footer.swig文件 找到 1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt;&lt;/span&gt; 更改为1&lt;span class=&quot;author&quot; itemprop=&quot;copyrightHolder&quot;&gt; &lt;a class=&quot;theme-link&quot; href=&quot;博客的网址&quot;&gt;本站&lt;/a&gt;作品版权为&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;所有，转载需取得&lt;a class=&quot;theme-link&quot; href=&quot;mailto:个人信箱&quot;&gt;本人&lt;/a&gt;同意并在明显位置处注明出处&lt;/span&gt; 注意: 代码中的“博客的网址”与“个人信箱”改为自己的 可能版权的说明措辞写的会有问题，欢迎指正。 声明: 本文转载前需与作者联系并标明出处。]]></content>
@@ -300,13 +265,6 @@
       <title><![CDATA[一夜在 BeiJing]]></title>
       <url>%2F2016%2F11%2F17%2F%E4%B8%80%E5%A4%9C%E5%9C%A8BeiJing%2F</url>
       <content type="text"><![CDATA[hahah，One Night in 北京，现在才认真听，罪过罪过，原来这首才是信的封神之作 One Night in 北京我留下许多情不管你爱与不爱都是历史的尘埃 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[说一首 晚安]]></title>
-      <url>%2F2016%2F11%2F17%2F%E8%AF%B4%E4%B8%80%E9%A6%96-%E6%99%9A%E5%AE%89%2F</url>
-      <content type="text"><![CDATA[&#160; &#160; &#160; &#160;丢火车乐队的《晚安》，如果毕业晚会有机会上的话，我想我会选这首歌。 晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边想说的话都没有说完 还是会有些遗憾这一生 有些短 晚安晚安 在醒来之前 我才会说出再见晚安 在天亮之后 那事非与你无关我们离开荒芜的绿洲回到没有阳光的白昼你醒了 尽管我所有的美梦都没做完你会不会突然地想起我在某个没有睡意的清醒时刻想把身上所有枷锁 全部挣脱只为自己做了选择你会不会突然地忘记了就这样等待到底是为了什么不安的心 渐渐干涸 失去了颜色再也不会想起我 晚安晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边我们离开荒芜的绿洲回到没有阳光的白昼你醒了 尽管我所有的美梦都没做完晚安 晚安晚安 晚安晚安 晚安晚安向沉睡自己告别你会不会突然地想起我在某个没有睡意的清醒时刻想把身上所有枷锁 全部挣脱只为自己做了选择你会不会突然地忘记了就这样等待到底是为了什么不安的心 渐渐干涸 失去了颜色再也不会想起我晚安 愿长夜无梦 在所有夜晚安眠晚安 望路途遥远 都有人陪伴身边 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
@@ -353,97 +311,6 @@
 
     
     <entry>
-      <title><![CDATA[云田·平安]]></title>
-      <url>%2F2016%2F11%2F15%2F%E4%BA%91%E7%94%B0%C2%B7%E5%B9%B3%E5%AE%89%2F</url>
-      <content type="text"><![CDATA[余生无梦 记事愿披风斩浪，便不得平静 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·安]]></title>
-      <url>%2F2016%2F11%2F15%2F%E4%BA%91%E7%94%B0%C2%B7%E5%AE%89%2F</url>
-      <content type="text"><![CDATA[一夜无梦 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·安眠曲（清晨）]]></title>
-      <url>%2F2016%2F11%2F15%2F%E4%BA%91%E7%94%B0%C2%B7%E5%AE%89%E7%9C%A0%E6%9B%B2%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[睡吧夜，还有星星 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·安眠曲（深夜）]]></title>
-      <url>%2F2016%2F11%2F15%2F%E4%BA%91%E7%94%B0%C2%B7%E5%AE%89%E7%9C%A0%E6%9B%B2%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
-      <content type="text"><![CDATA[晚安了灯，还有故事 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·桥]]></title>
-      <url>%2F2016%2F11%2F14%2F%E4%BA%91%E7%94%B0%C2%B7%E6%A1%A5%2F</url>
-      <content type="text"><![CDATA[冬日的斜阳桥北的影子桥南的我 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[大河·浮世]]></title>
-      <url>%2F2016%2F11%2F13%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%B5%AE%E4%B8%96%2F</url>
-      <content type="text"><![CDATA[无论河面多么 平静或汹涌不变的 永远是那河里的暗与河上的光 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[大河·浮生]]></title>
-      <url>%2F2016%2F11%2F13%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%B5%AE%E7%94%9F%2F</url>
-      <content type="text"><![CDATA[人的一生像泡沫 晶莹 绚烂像浪花 跳跃 沸腾像波涛 摇曳 翻滚可他们 终究是浮在这大河上被推着来 被推着走 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·凡星]]></title>
-      <url>%2F2016%2F11%2F07%2F%E4%BA%91%E7%94%B0%C2%B7%E5%87%A1%E6%98%9F%2F</url>
-      <content type="text"><![CDATA[我住在云上可我喜欢地上的星星他们，会闪烁，会熄灭 记事前些天回来时，客机从一座座城上空飞过，看着地上的灯火，有感而发 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[云田·云之南]]></title>
-      <url>%2F2016%2F11%2F07%2F%E4%BA%91%E7%94%B0%C2%B7%E4%BA%91%E4%B9%8B%E5%8D%97%2F</url>
-      <content type="text"><![CDATA[记得那年我还年幼你们还年轻 记事今，忽然听到一首年少时喜欢的歌，于是就这么听了一个深夜又想起，前些天在家时，母亲翻到一张她和父亲带着我还有友人出游时拍的合照，她视若珍宝。于是，便有了写云田集的想法，多关于生活的二三两事 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[野海·星空]]></title>
-      <url>%2F2016%2F11%2F04%2F%E9%87%8E%E6%B5%B7%C2%B7%E6%98%9F%E7%A9%BA%2F</url>
-      <content type="text"><![CDATA[无论夜多么的漆黑，也有一片星空，种在这海的最深处。 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[野海·芥子]]></title>
-      <url>%2F2016%2F11%2F04%2F%E9%87%8E%E6%B5%B7%C2%B7%E8%8A%A5%E5%AD%90%2F</url>
-      <content type="text"><![CDATA[再细的河，也有涟漪再窄的路，也有起伏再巍峨的山，再汹涌的海在极远处，也不过细沙一粒，死水一滩 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[野海·无尘]]></title>
-      <url>%2F2016%2F11%2F03%2F%E9%87%8E%E6%B5%B7%C2%B7%E6%97%A0%E5%B0%98%2F</url>
-      <content type="text"><![CDATA[谁也无法停在这野海上这野海也没法挽留谁 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[野海·所向]]></title>
-      <url>%2F2016%2F11%2F03%2F%E9%87%8E%E6%B5%B7%C2%B7%E6%89%80%E5%90%91%2F</url>
-      <content type="text"><![CDATA[野海永不靠岸他要将巨浪拍向苍穹和深渊 记事写在第一次进入社会，之后感觉太过安逸，遂辞，关于自身思考了不少，多为自我剖析，集为野海 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[第一个python练手小程序:二分实现n次方运算]]></title>
       <url>%2F2016%2F11%2F03%2F%E7%AC%AC%E4%B8%80%E4%B8%AApython%E7%BB%83%E6%89%8B%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BA%8C%E5%88%86%E5%AE%9E%E7%8E%B0n%E6%AC%A1%E6%96%B9%E8%BF%90%E7%AE%97%2F</url>
       <content type="text"><![CDATA[代码主要就是使用二分来对多次方运行进行简化，复杂度从n简化到log(n)，比较基本的代码，主要是用来练手的，对一些情况就未加判断也没有添加异常处理。1234567891011121314def power(x,n): ans = 1 lst=[] while n&gt;0: lst.append(n%2) n=n//2 for i in lst[::-1]: if i == 1 : ans=ans*ans*x else : ans=ans*ans return ans print(power(3,100)) 声明: 本文转载前需与作者联系并标明出处。]]></content>
@@ -454,27 +321,6 @@
       <title><![CDATA[11.2~11.8计划]]></title>
       <url>%2F2016%2F11%2F02%2F11-2~11-8%E8%AE%A1%E5%88%92%2F</url>
       <content type="text"><![CDATA[学习python 看算法导论 编写一些常用算法]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[大河·纤夫]]></title>
-      <url>%2F2016%2F10%2F28%2F%E5%A4%A7%E6%B2%B3%C2%B7%E7%BA%A4%E5%A4%AB%2F</url>
-      <content type="text"><![CDATA[下雨了我死命拽着纤绳她得留下 记事写在外婆手术前，心绪不宁 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[大河·泊船]]></title>
-      <url>%2F2016%2F10%2F28%2F%E5%A4%A7%E6%B2%B3%C2%B7%E6%B3%8A%E8%88%B9%2F</url>
-      <content type="text"><![CDATA[船上的人儿呐愿你们啊平缓地靠岸平缓地驶离 声明: 本文转载前需与作者联系并标明出处。]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[大河·初现]]></title>
-      <url>%2F2016%2F10%2F28%2F%E5%A4%A7%E6%B2%B3%C2%B7%E5%88%9D%E7%8E%B0%2F</url>
-      <content type="text"><![CDATA[生命是一条大河她汹涌而来，奔腾而去总是让人猝不及防，泪流满面 记事这两个月，发生了很多事，多关于生命其一侄女出生，其二外婆查出重病其三外甥女出生，其四舅舅查出重病于是想写一些文，来舒缓自己的情绪，集为大河 声明: 本文转载前需与作者联系并标明出处。]]></content>
     </entry>
 
     
